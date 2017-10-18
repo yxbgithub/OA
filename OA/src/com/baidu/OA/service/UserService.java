@@ -13,7 +13,7 @@ public class UserService {
 	
 	public void save(User user) {
 		userDao.save(new User());
-		int i = 9/0;
+		//int i = 9/0;
 		userDao.save(new User());
 	}
 
