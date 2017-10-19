@@ -19,7 +19,7 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 	private UserService userService;
 	
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	public final void test() {
 		userService.save(new User());
 		

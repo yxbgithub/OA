@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+  
+<Configuration status="OFF">  
+	<!--输出的显示地方和格式配置 -->
+    <Appenders>  
+        <Console name="Console" target="SYSTEM_OUT">  
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />  
+        </Console>  
+    </Appenders>  
+    
+    <Loggers>  
+      
+        <Root level="debug">  
+            <AppenderRef ref="Console" />  
+        </Root>  
+        
+         <!-- <Logger name="log4j.logger.org.hibernate.tool.hbm2ddl" level="debug">  
+            <AppenderRef ref="Console" />  
+        </Logger>   -->
+        
+        <!-- 表示com.baidu.OA包或者子包的log4j输出级别是debug, additivity设置是否在父logger里面显示信息，如果设置为
+        true（默认），将会在父logger里面显示（父logger是指涵盖该logger的logger，比如root标签里面的logger就是该logger
+        	的父logger，因为不配置该logger，则此处所指定的包下面的日志将依照root标签定义的logger来显示	-->
+         <Logger name="com.baidu.OA" level="debug" additivity="false">
+         	<!--引用前面配置的输出配置   -->
+            <AppenderRef ref="Console" />  
+        </Logger> 
+        
+    </Loggers>  
+</Configuration>  
