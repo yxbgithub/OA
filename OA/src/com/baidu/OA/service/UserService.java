@@ -1,5 +1,7 @@
 package com.baidu.OA.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -24,5 +26,9 @@ public class UserService {
 	@Resource(name="userDao")
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	public List<User> findAll() {
+		return userDao.findAll();
 	}
 }

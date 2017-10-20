@@ -13,6 +13,7 @@ import com.baidu.OA.model.User;
 //import org.slf4j.LoggerFactory;
 
 public class TestLogger extends Superclass<String>{
+	private String name = "subclass";
 	
 	//用common-logging接口编程
 	//private org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(TestLogger.class);
@@ -35,6 +36,12 @@ public class TestLogger extends Superclass<String>{
 		for(Type type : actualTypeArguments) {
 			System.out.println(type);
 		}
+		
+	}
+	
+	@Test
+	public final void test2() {
+		new TestLogger().print();
 		
 	}
 

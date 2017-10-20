@@ -4,12 +4,21 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<constant name="devMode" value="true"/>
+	<!-- <constant name="devMode" value="true"/> -->
 	<constant name="struts.action.extension" value="do"/>
     <package name="user" namespace="/oa" extends="struts-default">
 	    <action name="userAction" class="userAction" >
 	    	<result name="success" type="dispatcher">/index.jsp</result>
 	    </action>
 	    	    
+    </package>
+    
+    <package name="role" namespace="/oa" extends="struts-default">
+	    <action name="role_*" class="roleAction" method="{1}">
+	    	<result name="list" type="dispatcher">/WEB-INF/jsp/roleAction/list.jsp</result>
+	    	<result name="editUI" type="dispatcher">/WEB-INF/jsp/roleAction/editUI.jsp</result>
+	    	<result name="addUI" type="dispatcher">/WEB-INF/jsp/roleAction/addUI.jsp</result>
+	    	<result name="toList" type="redirectAction">role_list</result>
+	    </action>
     </package>
 </struts>

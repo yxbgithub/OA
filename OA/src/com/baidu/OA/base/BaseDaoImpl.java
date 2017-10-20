@@ -2,10 +2,13 @@ package com.baidu.OA.base;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
+
+import com.baidu.OA.util.ModelUtil;
 
 @SuppressWarnings("unchecked")
 public class BaseDaoImpl<T> implements BaseDao<T>{
@@ -40,6 +43,13 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 		hinernateTemplate.update(entity);
 	}
 
+	@Override
+	public List<T> findAll() {
+		String tableName = ModelUtil.getTableName(clazz);
+		return  (List<T>)hinernateTemplate.find("from " + tableName);
+	}
+	
+
 	public HibernateTemplate getHinernateTemplate() {
 		return hinernateTemplate;
 	}
@@ -48,6 +58,8 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 	public void setHinernateTemplate(HibernateTemplate hinernateTemplate) {
 		this.hinernateTemplate = hinernateTemplate;
 	}
+
+	
 	
 	
 
