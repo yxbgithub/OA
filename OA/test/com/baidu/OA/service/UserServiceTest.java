@@ -24,6 +24,7 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 		userService.save(new User());
 		
 	}
+	
 	public UserService getUserService() {
 		return userService;
 	}
