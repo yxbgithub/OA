@@ -2,6 +2,7 @@ package com.baidu.OA.util;
 
 import javax.persistence.Entity;
 
+
 public class ModelUtil {
 	
 	public static <T> String getTableName(Class<T> clazz) {
@@ -17,4 +18,7 @@ public class ModelUtil {
 		}
 		return clazz.getSimpleName();
 	}
+	
+	
+	
 }

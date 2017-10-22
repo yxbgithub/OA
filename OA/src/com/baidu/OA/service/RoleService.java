@@ -30,7 +30,7 @@ public class RoleService {
 		roleDao.save(role);
 	}
 
-	public Role getRoleById(int id) {
+	public Role getById(int id) {
 		return roleDao.getById(id);
 	}
 

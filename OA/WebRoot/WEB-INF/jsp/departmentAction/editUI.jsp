@@ -23,12 +23,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   	<s:debug></s:debug>
-  	<form name="editUIForm" method="get" action="oa/role_edit.do">
-  		<input type="hidden" name="id" value='<s:property value="%{#role.id}"/>'/>
-  		岗位名称<input type="text" name="name" value='<s:property value="%{#role.name}"/>'/><br>
-  		岗位说明<textarea name="description"  cols="30" rows="15"><s:property value="%{#role.description}"/></textarea> <br>
+  	<form name="addUIForm" method="get" action="oa/department_edit.do">
+  		<input type="hidden" name="id" value='<s:property value="id"/>'/>
+  		上级部门<select name="parent.id">
+  				<s:iterator value="%{#parents}">
+  					<option value='<s:property value="%{id}"/>'><s:property value="%{name}"/></option>
+  				</s:iterator>
+  			</select><br>
+  		部门名称<input type="text" name="name" value='<s:property value="name"/>'><br>
+  		职能说明<textarea name="description" cols="30" rows="15"><s:property value="description"/></textarea> <br>
   		<input type="submit" value="保存">
   	</form>
+  	hhdhhd
   <body>
     
   </body>

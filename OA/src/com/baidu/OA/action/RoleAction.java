@@ -26,11 +26,13 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role>{
 
 	
 	public String editUI() {
-		String name = roleService.getRoleById(role.getId()).getName();
+		/*String name = roleService.getRoleById(role.getId()).getName();
 		String description = roleService.getRoleById(role.getId()).getDescription();
 		role.setName(name);
-		role.setDescription(description);
+		role.setDescription(description);*/
+		role = roleService.getById(role.getId());
 System.out.println(role.getName());
+		ActionContext.getContext().put("role", role);
 		return "editUI";
 	}
 	

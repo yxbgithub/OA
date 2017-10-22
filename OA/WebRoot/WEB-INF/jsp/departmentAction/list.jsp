@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
-<%@taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'editUI.jsp' starting page</title>
+    <title>My JSP 'list.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -22,14 +22,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  	<s:debug></s:debug>
-  	<form name="editUIForm" method="get" action="oa/role_edit.do">
-  		<input type="hidden" name="id" value='<s:property value="%{#role.id}"/>'/>
-  		岗位名称<input type="text" name="name" value='<s:property value="%{#role.name}"/>'/><br>
-  		岗位说明<textarea name="description"  cols="30" rows="15"><s:property value="%{#role.description}"/></textarea> <br>
-  		<input type="submit" value="保存">
-  	</form>
+  
   <body>
-    
+	<s:debug></s:debug>
+    <s:iterator value="%{#departments}">
+    	部门名称:<s:property value="%{name}"/> 上级部门名称:<s:property value="parent.getName()"/> 职能说明:<s:property value="description"/><s:a href="oa/department_delete.do?id=%{id}">删除</s:a>
+    	<s:a href="oa/department_editUI.do?parent.id=%{parent.id}&name=%{name}&description=%{description}&id=%{id}">修改</s:a><br>
+    </s:iterator>
+    <s:a href="oa/department_addUI.do">新建</s:a>
   </body>
 </html>

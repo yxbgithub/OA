@@ -21,4 +21,13 @@
 	    	<result name="toList" type="redirectAction">role_list</result>
 	    </action>
     </package>
+     
+    <package name="department" namespace="/oa" extends="struts-default">
+	    <action name="department_*" class="departmentAction" method="{1}">
+	    	<result name="list" type="dispatcher">/WEB-INF/jsp/departmentAction/list.jsp</result>
+	    	<result name="editUI" type="dispatcher">/WEB-INF/jsp/departmentAction/editUI.jsp</result>
+	    	<result name="addUI" type="dispatcher">/WEB-INF/jsp/departmentAction/addUI.jsp</result>
+	    	<result name="toList" type="redirectAction">department_list</result>
+	    </action>
+    </package>
 </struts>
