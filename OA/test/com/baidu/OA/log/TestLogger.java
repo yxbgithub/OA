@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 
 import org.junit.Test;
 
+import com.baidu.OA.model.Role;
 import com.baidu.OA.model.User;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;

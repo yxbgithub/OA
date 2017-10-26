@@ -34,13 +34,14 @@ public class RoleService {
 		return roleDao.getById(id);
 	}
 
-	public void edit(Role role) {
-		roleDao.update(role);
-		
-	}
 
 	public void delete(Role role) {
 		roleDao.delete(role.getId());
+		
+	}
+
+	public void edit(Role model) {
+		roleDao.update(model);
 		
 	}
 

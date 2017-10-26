@@ -8,73 +8,82 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.baidu.OA.base.BaseAction;
 import com.baidu.OA.model.Department;
 import com.baidu.OA.service.DepartmentService;
+import com.baidu.OA.util.DepartmentUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Controller("departmentAction")
 @Scope("prototype")
-public class DepartmentAction extends ActionSupport implements ModelDriven<Department>{
-	private DepartmentService departmentService;
-	private Department department = new Department();
+public class DepartmentAction extends BaseAction<Department>{
+	private Integer parentId;
 	
 	public String list() {
-		List<Department> departments =null;
-		departments = departmentService.findAll();
-		ActionContext.getContext().put("departments", departments);
+		List<Department> topDepartments =null;
+		if(null == parentId) {
+			topDepartments = departmentService.findTopLevelDepartment();
+			ActionContext.getContext().put("departments", topDepartments);
+		} else {
+			List<Department> secondLevelDepartments =null;
+			secondLevelDepartments = departmentService.finChildren(parentId.intValue());
+			ActionContext.getContext().put("departments", secondLevelDepartments);
+		}
 		return "list";
-	}
-
-	public DepartmentService getDepartmentService() {
-		return departmentService;
 	}
 	
 	public String addUI() {
-		List<Department> departments =null;
-		departments = departmentService.findAll();
-		ActionContext.getContext().put("departments", departments);
-System.out.println("-------------------------->aaaaa");
-		return "addUI";
+		List<Department> topDepartments = departmentService.findTopLevelDepartment();
+		List<Department> treeList = new ArrayList<Department>();
+		String prefix = "┫";
+		DepartmentUtil.tree(topDepartments, treeList, prefix, null);
+		ActionContext.getContext().put("departments", treeList);
+		return "saveUI";
 	}
 	
 	public String add() {
-System.out.println("------------------------------>bbbbb");
-System.out.println("id:" + department.getId());
-//System.out.println("id:" + department.getId() + "parentId:" + department.getParent().getId());
-		departmentService.add(department);
-
-		return "toList";
+		departmentService.add(model);
+			return "toList";
 	}
 
 	public String delete() {
-		departmentService.delete(department);
+		departmentService.deleteDepartmentAndChildren(model);
 		return "toList";
 	}
 	
 	public String editUI() {
-		List<Department> parents = new ArrayList<Department>();
-		departmentService.findParent(department, parents);
-		ActionContext.getContext().put("parents", parents);
-		return "editUI";
+		List<Department> topDepartments = departmentService.findTopLevelDepartment();
+		List<Department> treeList = new ArrayList<Department>();
+		String prefix = "┫";
+		DepartmentUtil.tree(topDepartments, treeList, prefix, model);
+		ActionContext.getContext().put("departments", treeList);
+		return "saveUI";
 	}
 	
 	public String edit() {
-		departmentService.update(department);
+		
+		departmentService.update(model);
 		return "toList";
 	}
 	
-	@Resource(name="departmentService")
-	public void setDepartmentService(DepartmentService departmentService) {
-		this.departmentService = departmentService;
+	public String back() {
+		Department department = departmentService.getById(parentId.intValue());
+		if(department.getParent() != null) {
+			parentId = department.getParent().getId();
+		} else {
+			parentId = null;
+		}
+		return "toList";
+	}
+	
+	public Integer getParentId() {
+		return parentId;
 	}
 
-	@Override
-	public Department getModel() {
-		return department;
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
 	}
 
-	
-	
 }

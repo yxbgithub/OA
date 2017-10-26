@@ -6,18 +6,11 @@
 <struts>
 	<!-- <constant name="devMode" value="true"/> -->
 	<constant name="struts.action.extension" value="do"/>
-    <package name="user" namespace="/oa" extends="struts-default">
-	    <action name="userAction" class="userAction" >
-	    	<result name="success" type="dispatcher">/index.jsp</result>
-	    </action>
-	    	    
-    </package>
     
     <package name="role" namespace="/oa" extends="struts-default">
 	    <action name="role_*" class="roleAction" method="{1}">
 	    	<result name="list" type="dispatcher">/WEB-INF/jsp/roleAction/list.jsp</result>
-	    	<result name="editUI" type="dispatcher">/WEB-INF/jsp/roleAction/editUI.jsp</result>
-	    	<result name="addUI" type="dispatcher">/WEB-INF/jsp/roleAction/addUI.jsp</result>
+	    	<result name="saveUI" type="dispatcher">/WEB-INF/jsp/roleAction/saveUI.jsp</result>
 	    	<result name="toList" type="redirectAction">role_list</result>
 	    </action>
     </package>
@@ -25,9 +18,17 @@
     <package name="department" namespace="/oa" extends="struts-default">
 	    <action name="department_*" class="departmentAction" method="{1}">
 	    	<result name="list" type="dispatcher">/WEB-INF/jsp/departmentAction/list.jsp</result>
-	    	<result name="editUI" type="dispatcher">/WEB-INF/jsp/departmentAction/editUI.jsp</result>
-	    	<result name="addUI" type="dispatcher">/WEB-INF/jsp/departmentAction/addUI.jsp</result>
-	    	<result name="toList" type="redirectAction">department_list</result>
+	    	<result name="saveUI" type="dispatcher">/WEB-INF/jsp/departmentAction/saveUI.jsp</result>
+	    	<result name="toList" type="redirectAction">department_list?parentId=${parentId}</result>
+	    </action>
+    </package>
+    
+    <package name="user" namespace="/oa" extends="struts-default">
+	    <action name="user_*" class="userAction" method="{1}">
+	    	<result name="list" type="dispatcher">/WEB-INF/jsp/userAction/list.jsp</result>
+	    	<result name="editUI" type="dispatcher">/WEB-INF/jsp/userAction/editUI.jsp</result>
+	    	<result name="addUI" type="dispatcher">/WEB-INF/jsp/userAction/addUI.jsp</result>
+	    	<result name="toList" type="redirectAction">user_list</result>
 	    </action>
     </package>
 </struts>

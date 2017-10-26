@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.baidu.OA.dao.DepartmentDao;
 import com.baidu.OA.model.Department;
+import com.baidu.OA.util.DepartmentUtil;
 
 @Service("departmentService")
 public class DepartmentService {
@@ -28,6 +29,9 @@ public class DepartmentService {
 	}
 
 	public void add(Department department) {
+		if(-1 == department.getParent().getId()) {
+			department.setParent(null);
+		}
 		departmentDao.save(department);
 	}
 
@@ -41,7 +45,32 @@ public class DepartmentService {
 	}
 
 	public void update(Department department) {
+		if(-1 == department.getParent().getId()) {
+			department.setParent(null);
+		}
 		departmentDao.update(department);
 	}
 
+	public void deleteDepartmentAndChildren(Department department) {
+		List<Department> children = departmentDao.findChilaren(department.getId());
+		for(int i=0; i<children.size(); i++) {
+			deleteDepartmentAndChildren(children.get(i));
+		}
+		departmentDao.delete(department.getId());
+		
+	}
+
+	public List<Department> findTopLevelDepartment() {
+		return departmentDao.findTopLevelDepartment();
+	}
+
+
+	public List<Department> finChildren(int parentId) {
+		return departmentDao.findChilaren(parentId);
+	}
+
+
+	public Department getById(int id) {
+		return departmentDao.getById(id);
+	}
 }

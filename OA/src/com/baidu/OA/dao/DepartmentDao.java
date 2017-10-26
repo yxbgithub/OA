@@ -8,4 +8,6 @@ import com.baidu.OA.model.Department;
 public interface DepartmentDao extends BaseDao<Department>{
 
 	public void findParent(Department department, List<Department> parents );
+	public List<Department> findChilaren(int parentId);
+	public List<Department> findTopLevelDepartment();
 }

@@ -13,10 +13,16 @@ import com.baidu.OA.model.User;
 public class UserService {
 	private UserDao userDao;
 	
-	public void save(User user) {
-		userDao.save(new User());
-		//int i = 9/0;
-		userDao.save(new User());
+	public void add(User user) {
+		userDao.save(user);
+	}
+	
+	public List<User> findAll() {
+		return userDao.findAll();
+	}
+
+	public void delete(User user) {
+		userDao.delete(user.getId());
 	}
 
 	public UserDao getUserDao() {
@@ -28,7 +34,5 @@ public class UserService {
 		this.userDao = userDao;
 	}
 
-	public List<User> findAll() {
-		return userDao.findAll();
-	}
+
 }

@@ -16,7 +16,7 @@ public class Department {
 	private String description;
 	private Department parent;
 	private Set<Department> children;
-	
+	private Set<User> users;
 
 	@Id
 	@GeneratedValue
@@ -60,6 +60,15 @@ public class Department {
 
 	public void setChildren(Set<Department> children) {
 		this.children = children;
+	}
+
+	@OneToMany(mappedBy="department")
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 }

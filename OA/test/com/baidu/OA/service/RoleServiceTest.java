@@ -14,6 +14,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.baidu.OA.model.Role;
 import com.baidu.OA.model.User;
+import com.baidu.OA.service.RoleService;
+import com.baidu.OA.service.UserService;
 @ContextConfiguration(locations="classpath:beans.xml")
 @TransactionConfiguration(transactionManager="txManager",defaultRollback=true)
 public class RoleServiceTest extends AbstractTransactionalJUnit4SpringContextTests{
