@@ -36,7 +36,7 @@ public class User {
 		return department;
 	}
 
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany
 	public Set<Role> getRoles() {
 		return roles;
 	}

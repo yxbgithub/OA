@@ -10,13 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<base href="<%=basePath%>">
     <title>¸ÚÎ»ÁÐ±í</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script language="javascript" src="script/jquery.js"></script>
-    <script language="javascript" src="script/pageCommon.js" charset="utf-8"></script>
-    <script language="javascript" src="script/PageUtils.js" charset="utf-8"></script>
-    <link type="text/css" rel="stylesheet" href="style/blue/pageCommon.css" />
-    <script type="text/javascript">
-    </script>
+    <%@ include file="/WEB-INF/jsp/public/header.jspf" %>
 </head>
 <body>
  

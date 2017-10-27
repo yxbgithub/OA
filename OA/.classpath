@@ -17,7 +17,6 @@
 			<attribute name="owner.project.facets" value="jst.web.jstl"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring2.5"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/java EE6.0自定义包（除了里面的javax.persistence)"/>

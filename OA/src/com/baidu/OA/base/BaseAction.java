@@ -6,12 +6,14 @@ import javax.annotation.Resource;
 
 import com.baidu.OA.service.DepartmentService;
 import com.baidu.OA.service.RoleService;
+import com.baidu.OA.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	protected RoleService roleService;
 	protected DepartmentService departmentService;
+	protected UserService userService;
 	
 	protected T model;
 
@@ -49,6 +51,15 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 
 	public DepartmentService getDepartmentService() {
 		return departmentService;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+	
+	@Resource(name="userService")
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 }
 
