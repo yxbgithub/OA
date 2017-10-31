@@ -45,8 +45,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><a href='oa/department_list.do?parentId=<s:property value="%{id}"/>'><s:property value="%{name}"/></a>&nbsp;</td>
 					<td><s:property value="%{parent.name}"/>&nbsp;</td>
 					<td><s:property value="%{description}"/>&nbsp;</td>
-					<td><s:a href="oa/department_delete.do?id=%{id}&parentId=%{parentId}" onclick="return window.confirm('这将删除所有的下级部门，您确定要删除吗？')">删除</s:a>
-						<s:a href="oa/department_editUI.do?parent.id=%{parent.id}&name=%{name}&description=%{description}&id=%{id}&parentId=%{parentId}">修改</s:a>
+					<td>
+						<s:if test="%{#session.user.hasPrivilegeByUrl('department_delete')}">
+							<s:a href="oa/department_delete.do?id=%{id}&parentId=%{parentId}" onclick="return window.confirm('这将删除所有的下级部门，您确定要删除吗？')">删除</s:a>
+						</s:if>
+						<s:if test="%{#session.user.hasPrivilegeByUrl('department_edit')}">
+							<s:a href="oa/department_editUI.do?parent.id=%{parent.id}&name=%{name}&description=%{description}&id=%{id}&parentId=%{parentId}">修改</s:a>
+						</s:if>
 					</td>
 				</tr>
 			</s:iterator>
@@ -56,7 +61,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 其他功能超链接 -->
     <div id="TableTail">
         <div id="TableTail_inside">
-          	<s:a href="oa/department_addUI.do?parentId=%{parentId}"><img src="style/images/createNew.png" /></s:a>  
+        	<s:if test="%{#session.user.hasPrivilegeByUrl('department_add')}">
+          		<s:a href="oa/department_addUI.do?parentId=%{parentId}"><img src="style/images/createNew.png" /></s:a>  
+           	</s:if>
             <s:if test="%{parentId != null}">
             	 <a href="oa/department_back.do?parentId=<s:property value="%{parentId}"/>"><IMG src="style/blue/images/button/ReturnToPrevLevel.png" /></a>
             </s:if>

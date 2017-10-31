@@ -4,5 +4,6 @@ import com.baidu.OA.base.BaseDao;
 import com.baidu.OA.model.User;
 
 public interface UserDao extends BaseDao<User>{
+	User getByLoginNameAndPassword(String loginName, String password);
 
 }

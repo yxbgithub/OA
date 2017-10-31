@@ -35,6 +35,7 @@
 				<value>com.baidu.OA.model.User</value>
 				<value>com.baidu.OA.model.Role</value>
 				<value>com.baidu.OA.model.Department</value>
+				<value>com.baidu.OA.model.Privilege</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -64,7 +65,7 @@
 
 	<aop:config>
 		<aop:pointcut id="serviceOperation"
-			expression="execution(* com.baidu.OA.service.*.*(..))" />
+			expression="execution(* com.baidu.OA.service.*.*(..)) or execution(* com.baidu.OA.install.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
 	</aop:config>
 	

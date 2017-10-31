@@ -60,6 +60,11 @@ public class RoleService {
 		return roles;
 	}
 
+	public void update(Role role) {
+		roleDao.update(role);
+		
+	}
+
 	
 
 }

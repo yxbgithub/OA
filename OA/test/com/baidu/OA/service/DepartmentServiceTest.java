@@ -31,6 +31,8 @@ public class DepartmentServiceTest extends AbstractTransactionalJUnit4SpringCont
 		department.setDescription("a");
 		department.setId(1);
 		
+		departmentService.add(department);
+		
 		//departmentService.add(department);
 		
 		/*Department parent = new Department();

@@ -12,6 +12,11 @@
 		<param-value>classpath:beans.xml</param-value>
 	</context-param>
 
+
+	<listener>
+		<listener-class>com.baidu.OA.util.OAListener</listener-class>
+	</listener>
+
 	<filter>
 		<filter-name>openSessionInView</filter-name>
 		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>

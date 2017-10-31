@@ -1,5 +1,6 @@
 package com.baidu.OA.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity(name="t_department")
-public class Department {
+public class Department implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6669868581564943647L;
 	private int id;
 	private String name;
 	private String description;

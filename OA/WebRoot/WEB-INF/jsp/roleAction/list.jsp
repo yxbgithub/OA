@@ -42,9 +42,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr class="TableDetail1 template">
 					<td><s:property value="%{name}"/>&nbsp;</td>
 					<td><s:property value="%{description}"/>&nbsp;</td>
-					<td><a onClick="return delConfirm()" href='oa/role_delete.do?id=<s:property value="%{id}"/>'>删除</a>
-						<a href='oa/role_editUI.do?id=<s:property value="%{id}"/>'>修改</a>
-						<a href="setPrivilegeUI.html">设置权限</a>
+					<td>
+						<s:if test="%{#session.user.hasPrivilegeByUrl('role_delete')}">
+							<a onClick="return delConfirm()" href='oa/role_delete.do?id=<s:property value="%{id}"/>'>删除</a>
+						</s:if>
+						<s:if test="#session.user.hasPrivilegeByUrl('role_edit')">
+							<a href='oa/role_editUI.do?id=<s:property value="%{id}"/>'>修改</a>
+						</s:if>
+						<s:if test="#session.user.hasPrivilegeByUrl('role_privilege')">
+							<a href='oa/role_setPrivilegeUI.do?id=<s:property value="%{id}"/>'>设置权限</a>
+						</s:if>
 					</td>
 				</tr>
 			</s:iterator>
@@ -54,7 +61,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 其他功能超链接 -->
     <div id="TableTail">
         <div id="TableTail_inside">
+       	 <s:if test="#session.user.hasPrivilegeByUrl('role_add')">
             <a href="oa/role_addUI.do"><img src="style/images/createNew.png" /></a>
+          </s:if>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ package com.baidu.OA.base;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -38,6 +39,7 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 		return (T)hinernateTemplate.get(clazz, id);
 	}
 
+	
 	@Override
 	public void update(T entity) {
 		hinernateTemplate.update(entity);
@@ -57,6 +59,15 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 	@Resource(name="hibernateTemplate")
 	public void setHinernateTemplate(HibernateTemplate hinernateTemplate) {
 		this.hinernateTemplate = hinernateTemplate;
+	}
+
+	@Override
+	public List<T> getByIds(int[] ids) {
+		List<T> list = new ArrayList<T>();
+		for(int id : ids) {
+			list.add(this.getById(id));
+		}
+		return list;
 	}
 
 	

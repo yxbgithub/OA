@@ -26,5 +26,24 @@
             <AppenderRef ref="Console" />  
         </Logger> 
         
+        <!-- <Logger name="com.opensymphony.xwork2" level="error" additivity="false">
+         	引用前面配置的输出配置  
+            <AppenderRef ref="Console" />  
+        </Logger>
+        
+        <Logger name="org.apache.struts2" level="error" additivity="false">
+         	引用前面配置的输出配置  
+            <AppenderRef ref="Console" />  
+        </Logger>
+        
+        <Logger name="freemarker.beans" level="error" additivity="false">
+         	引用前面配置的输出配置  
+            <AppenderRef ref="Console" />  
+        </Logger>
+        
+         <Logger name="freemarker.cache" level="error" additivity="false">
+         	引用前面配置的输出配置  
+            <AppenderRef ref="Console" />  
+        </Logger> -->
     </Loggers>  
 </Configuration>  

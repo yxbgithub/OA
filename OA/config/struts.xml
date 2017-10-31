@@ -4,20 +4,38 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<!-- <constant name="devMode" value="true"/> -->
+	<constant name="struts.devMode" value="true" />
 	<constant name="struts.action.extension" value="do" />
 
 	<package name="role" namespace="/oa" extends="struts-default">
+		<interceptors>
+			<!-- 定义我们自己的拦截器 -->
+			<interceptor name="privilegeInterceptor" class="com.baidu.OA.util.PrivilegeInterceptor"></interceptor>
+			<!-- 定义我们自己的拦截器栈 -->
+			<interceptor-stack name="MyDefaultInterceptor">
+				<interceptor-ref name="privilegeInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- 引用我们自己定义的拦截器栈 -->
+		<default-interceptor-ref name="MyDefaultInterceptor"></default-interceptor-ref>
+		
+		<!-- 设置全局结果 ,当没有权限访问或者没有登录时，转到全局结果页面-->
+		<global-results>
+			<result name="loginInUI" type="dispatcher">/WEB-INF/jsp/loginAction/loginInUI.jsp</result>
+			<result name="noPrivilege" type="dispatcher">/WEB-INF/jsp/globals/noPrivilege.jsp</result>
+		</global-results>
+		
+		<!--  岗位模块-->
 		<action name="role_*" class="roleAction" method="{1}">
-			<result name="list" type="dispatcher">/WEB-INF/jsp/roleAction/list.jsp
-			</result>
-			<result name="saveUI" type="dispatcher">/WEB-INF/jsp/roleAction/saveUI.jsp
-			</result>
+			<result name="list" type="dispatcher">/WEB-INF/jsp/roleAction/list.jsp</result>
+			<result name="saveUI" type="dispatcher">/WEB-INF/jsp/roleAction/saveUI.jsp</result>
+			<result name="setPrivilegeUI" type="dispatcher">/WEB-INF/jsp/roleAction/setPrivilegeUI.jsp</result>
 			<result name="toList" type="redirectAction">role_list</result>
 		</action>
-	</package>
 
-	<package name="department" namespace="/oa" extends="struts-default">
+		<!-- 部门模块 -->
 		<action name="department_*" class="departmentAction" method="{1}">
 			<result name="list" type="dispatcher">/WEB-INF/jsp/departmentAction/list.jsp
 			</result>
@@ -26,13 +44,28 @@
 			<result name="toList" type="redirectAction">department_list?parentId=${parentId}
 			</result>
 		</action>
-	</package>
 
-	<package name="user" namespace="/oa" extends="struts-default">
+		<!--  用户模块-->
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="list" type="dispatcher">/WEB-INF/jsp/userAction/list.jsp</result>
 			<result name="saveUI" type="dispatcher">/WEB-INF/jsp/userAction/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">user_list</result>
 		</action>
+	
+		<!--  登录模块-->
+		<action name="login_*" class="loginAction" method="{1}">
+			<result name="toIndex" type="redirectAction">home_index</result>
+			<result name="loginOutUI" type="dispatcher">/WEB-INF/jsp/loginAction/loginOutUI.jsp</result>
+		</action>
+		
+		<!--  首页模块-->
+		<action name="home_*" class="homeAction" method="{1}">
+			<result name="index" type="dispatcher">/WEB-INF/jsp/homeAction/index.jsp</result>
+			<result name="left" type="dispatcher">/WEB-INF/jsp/homeAction/left.jsp</result>
+			<result name="right" type="dispatcher">/WEB-INF/jsp/homeAction/right.jsp</result>
+			<result name="top" type="dispatcher">/WEB-INF/jsp/homeAction/top.jsp</result>
+			<result name="bottom" type="dispatcher">/WEB-INF/jsp/homeAction/bottom.jsp</result>
+		</action>
 	</package>
+	
 </struts>

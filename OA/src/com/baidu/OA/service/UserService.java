@@ -65,5 +65,13 @@ public class UserService {
 		
 	}
 
+	public User getByLoginNameAndPassword(String loginName, String password) {
+		if(null == password || null == loginName) {
+			return null;
+		}
+		password = DigestUtils.md5Hex(password);
+		return userDao.getByLoginNameAndPassword(loginName, password);
+	}
+
 
 }

@@ -53,9 +53,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                	&nbsp;
 	                </td>
 	                <td><s:property value="description"/>&nbsp;</td>
-	                <td><s:a onclick="return delConfirm()" href="oa/user_delete.do?id=%{id}">删除</s:a>
-	                    <s:a href="oa/user_editUI.do?departmentId=%{department.id}&id=%{id}">修改</s:a>
-						<s:a onclick="return window.confirm('您确定要初始化密码为1234吗？')" href="oa/user_initPassword.do?id=%{id}">初始化密码</s:a>
+	                <td>
+	                	<s:if test="%{#session.user.hasPrivilegeByUrl('user_delete')}">
+	                		<s:a onclick="return delConfirm()" href="oa/user_delete.do?id=%{id}">删除</s:a>
+	                	</s:if>
+	                	<s:if test="%{#session.user.hasPrivilegeByUrl('user_edit')}">
+	                   	 	<s:a href="oa/user_editUI.do?departmentId=%{department.id}&id=%{id}">修改</s:a>
+						</s:if>
+						<s:if test="%{#session.user.hasPrivilegeByUrl('user_initPassword')}">
+							<s:a onclick="return window.confirm('您确定要初始化密码为1234吗？')" href="oa/user_initPassword.do?id=%{id}">初始化密码</s:a>
+	               		</s:if>
 	                </td>
 	            </tr>
             </s:iterator>
@@ -65,10 +72,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 其他功能超链接 -->
     <div id="TableTail">
         <div id="TableTail_inside">
-        	<s:a href="oa/user_addUI.do"><img src="style/images/createNew.png" /></s:a>
+        	<s:if test="%{#session.user.hasPrivilegeByUrl('user_add')}">
+        		<s:a href="oa/user_addUI.do"><img src="style/images/createNew.png" /></s:a>
+        	</s:if>
         </div>
     </div>
 </div>
 
+<s:iterator value="%{#session.user.roles}">
+	<s:property value="name"/>
+	<s:iterator value="privileges">
+		<s:property value="name"/>
+	</s:iterator>
+</s:iterator>
+
+<s:debug></s:debug>
 </body>
 </html>

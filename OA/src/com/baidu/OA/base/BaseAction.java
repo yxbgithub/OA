@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 import javax.annotation.Resource;
 
 import com.baidu.OA.service.DepartmentService;
+import com.baidu.OA.service.PrivilegeService;
 import com.baidu.OA.service.RoleService;
 import com.baidu.OA.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -14,6 +15,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	protected RoleService roleService;
 	protected DepartmentService departmentService;
 	protected UserService userService;
+	protected PrivilegeService privilegeService;
 	
 	protected T model;
 
@@ -60,6 +62,15 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	@Resource(name="userService")
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+
+	public PrivilegeService getPrivilegeService() {
+		return privilegeService;
+	}
+
+	@Resource(name="privilegeService")
+	public void setPrivilegeService(PrivilegeService privilegeService) {
+		this.privilegeService = privilegeService;
 	}
 }
 

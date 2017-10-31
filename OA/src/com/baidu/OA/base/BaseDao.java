@@ -7,6 +7,7 @@ public interface BaseDao<T> {
 	public void save(T entity);
 	public void delete(int id);
 	public T getById(int id);
+	public List<T> getByIds(int[] ids);
 	public void update(T entity);
 	public List<T> findAll();
 	

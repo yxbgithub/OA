@@ -90,6 +90,22 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 		
 	}
 	
+	
+	@Test
+	@Rollback(false)
+	public void test2() {
+		User user = new User();
+		user.setName("u1");
+		 
+		Role role = new Role();
+		role.setName("r1");
+		Set<Role> roles = new HashSet<Role>();
+		roles.add(role);
+		user.setRoles(roles);	 
+		userService.add(user);
+		
+	}
+	
 	public UserService getUserService() {
 		return userService;
 	}

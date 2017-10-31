@@ -102,7 +102,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </form>
 </div>
-
 <div class="Description">
 	说明：<br />
 	1，用户的登录名要唯一，在填写时要同时检测是否可用。<br />
