@@ -39,4 +39,10 @@ public class DepartmentDaoImplTest {
 		System.out.println(department.getId());
 		
 	}
+	
+	@Test
+	public final void test1() {
+		ApplicationContext factory = new ClassPathXmlApplicationContext("beans.xml");
+		
+	}
 }

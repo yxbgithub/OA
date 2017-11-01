@@ -66,6 +66,13 @@
 			<result name="top" type="dispatcher">/WEB-INF/jsp/homeAction/top.jsp</result>
 			<result name="bottom" type="dispatcher">/WEB-INF/jsp/homeAction/bottom.jsp</result>
 		</action>
-	</package>
 	
+		<!--  版块模块-->
+		<action name="forumManager_*" class="forumManagerAction" method="{1}">
+			<result name="list" type="dispatcher">/WEB-INF/jsp/forumManagerAction/list.jsp</result>
+			<result name="saveUI" type="dispatcher">/WEB-INF/jsp/forumManagerAction/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">forumManager_list</result>
+		</action>
+	
+	</package>
 </struts>

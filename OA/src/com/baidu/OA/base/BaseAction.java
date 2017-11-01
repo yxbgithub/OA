@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 import javax.annotation.Resource;
 
 import com.baidu.OA.service.DepartmentService;
+import com.baidu.OA.service.ForumService;
 import com.baidu.OA.service.PrivilegeService;
 import com.baidu.OA.service.RoleService;
 import com.baidu.OA.service.UserService;
@@ -16,6 +17,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	protected DepartmentService departmentService;
 	protected UserService userService;
 	protected PrivilegeService privilegeService;
+	protected ForumService forumService;
 	
 	protected T model;
 
@@ -71,6 +73,15 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	@Resource(name="privilegeService")
 	public void setPrivilegeService(PrivilegeService privilegeService) {
 		this.privilegeService = privilegeService;
+	}
+
+	public ForumService getForumService() {
+		return forumService;
+	}
+	
+	@Resource(name="forumService")
+	public void setForumService(ForumService forumService) {
+		this.forumService = forumService;
 	}
 }
 
