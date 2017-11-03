@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%
 	String path = request.getContextPath();
@@ -27,12 +27,12 @@
 		<div id="Head1Right">
 			<div id="Head1Right_UserName">
 				<img border="0" width="13" height="14"
-					src="style/images/top/user.gif" /> ÄúºÃ£¬<b><s:property value="%{#session.user.name}"/></b>
+					src="style/images/top/user.gif" /> æ‚¨å¥½ï¼Œ<b><s:property value="%{#session.user.name}"/></b>
 			</div>
 			<div id="Head1Right_UserDept"></div>
 			<div id="Head1Right_UserSetup">
 				<a href="javascript:void(0)"> <img border="0" width="13"
-					height="14" src="style/images/top/user_setup.gif" /> ¸öÈËÉèÖÃ
+					height="14" src="style/images/top/user_setup.gif" /> ä¸ªäººè®¾ç½®
 				</a>
 			</div>
 			<div id="Head1Right_Time"></div>
@@ -40,14 +40,14 @@
 
 		<div id="Head1Right_SystemButton">
 			<a target="_parent" href="JavaScript:parent.window.location.href='oa/login_loginOut.do';"> <img
-				width="78" height="20" alt="ÍË³öÏµÍ³"
+				width="78" height="20" alt="é€€å‡ºç³»ç»Ÿ"
 				src="style/blue/images/top/logout.gif" />
 			</a>
 		</div>
 
 		<div id="Head1Right_Button">
 			<a target="desktop" href="/desktop?method=show"> <img width="65"
-				height="20" alt="ÏÔÊ¾×ÀÃæ" src="style/blue/images/top/desktop.gif" />
+				height="20" alt="æ˜¾ç¤ºæ¡Œé¢" src="style/blue/images/top/desktop.gif" />
 			</a>
 		</div>
 	</div>
@@ -57,23 +57,23 @@
 			<ul id="AwokeNum">
 				<li><a target="desktop" href="javascript:void(0)"> <img
 						border="0" width="11" height="13" src="style/images/top/msg.gif" />
-						ÏûÏ¢ <span id="msg"></span>
+						æ¶ˆæ¯ <span id="msg"></span>
 				</a></li>
 				<li class="Line"></li>
 				<li><a target="desktop" href="javascript:void(0)"> <img
 						border="0" width="16" height="11" src="style/images/top/mail.gif" />
-						ÓÊ¼þ <span id="mail"></span>
+						é‚®ä»¶ <span id="mail"></span>
 				</a></li>
 				<li class="Line"></li>
-				<!-- ÊÇ·ñÓÐ´ýÉóÅúÎÄµµµÄÌáÊ¾1£¬ÊýÁ¿ -->
+				<!-- æ˜¯å¦æœ‰å¾…å®¡æ‰¹æ–‡æ¡£çš„æç¤º1ï¼Œæ•°é‡ -->
 				<li><a href="Flow_Formflow/myTaskList.html" target="desktop">
 						<img border="0" width="12" height="14"
-						src="style/images/top/wait.gif" /> ´ý°ìÊÂÏî£¨<span id="wait"
-						class="taskListSize">1</span>£©
+						src="style/images/top/wait.gif" /> å¾…åŠžäº‹é¡¹ï¼ˆ<span id="wait"
+						class="taskListSize">1</span>ï¼‰
 				</a></li>
 
-				<!-- ÊÇ·ñÓÐ´ýÉóÅúÎÄµµµÄÌáÊ¾2£¬ÌáÊ¾ÉóÅú -->
-				<li id="messageArea">ÄúÓÐ 1 ¸ö´ýÉóÅúÎÄµµ£¬Çë¼°Ê±ÉóÅú£¡¡ï¡ï¡ï¡ï¡ï</li>
+				<!-- æ˜¯å¦æœ‰å¾…å®¡æ‰¹æ–‡æ¡£çš„æç¤º2ï¼Œæç¤ºå®¡æ‰¹ -->
+				<li id="messageArea">æ‚¨æœ‰ 1 ä¸ªå¾…å®¡æ‰¹æ–‡æ¡£ï¼Œè¯·åŠæ—¶å®¡æ‰¹ï¼â˜…â˜…â˜…â˜…â˜…</li>
 			</ul>
 		</div>
 
@@ -81,7 +81,7 @@
 			<marquee style="WIDTH: 100%;" onMouseOver="this.stop()"
 				onMouseOut="this.start()" scrollamount=1 scrolldelay=30
 				direction=left>
-				<b>ÕâÊÇ¹ö¶¯µÄÏûÏ¢</b>
+				<b>è¿™æ˜¯æ»šåŠ¨çš„æ¶ˆæ¯</b>
 			</marquee>
 		</div>
 	</div>

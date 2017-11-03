@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030" />
-<title>您已退出Itcast OA系统</title>
+<title>鎮ㄥ凡閫�鍑篒tcast OA绯荤粺</title>
 <link href="style/blue/logout.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -27,9 +27,9 @@
 					</div>
 					<div id=LogoutOperate>
 						<img src="style/blue/images/logout/logout2.gif" border=0 /> <a
-							href="oa/login_loginInUI.do">重新进入系统</a> <img
+							href="oa/login_loginInUI.do">閲嶆柊杩涘叆绯荤粺</a> <img
 							src="style/blue/images/logout/logout3.gif" border=0 /> <a
-							href="javascript: window.close();">关闭当前窗口</a>
+							href="javascript: window.close();">鍏抽棴褰撳墠绐楀彛</a>
 					</div>
 				</div>
 			</td>

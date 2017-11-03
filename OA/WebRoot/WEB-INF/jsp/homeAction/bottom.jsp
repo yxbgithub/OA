@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -16,15 +16,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div id="StatusBar">
     <div id="Online">
-    	ÔÚÏßÈËÔ±£º¹² <span class="OnlineUser" id="onlineUserNum"></span> ÈË
-        <span class="OnlineView"><a href="javascript:void(0)">[²é¿´ÔÚÏßÃûµ¥]</a></span>
+    	åœ¨çº¿äººå‘˜ï¼šå…± <span class="OnlineUser" id="onlineUserNum"></span> äºº
+        <span class="OnlineView"><a href="javascript:void(0)">[æŸ¥çœ‹åœ¨çº¿åå•]</a></span>
     </div>
     <div id="Info">
-    	<a href="http://www.itcast.cn" title = "´«ÖÇ²¥¿ÍÊ×Ò³" target="_blank">´«ÖÇ²¥¿ÍÊ×Ò³</a> |
-        <a href="http://bbs.itcast.cn" title = "´«ÖÇ²¥¿ÍBBS" target="_blank">´«ÖÇ²¥¿ÍBBS</a> 
+    	<a href="http://www.itcast.cn" title = "ä¼ æ™ºæ’­å®¢é¦–é¡µ" target="_blank">ä¼ æ™ºæ’­å®¢é¦–é¡µ</a> |
+        <a href="http://bbs.itcast.cn" title = "ä¼ æ™ºæ’­å®¢BBS" target="_blank">ä¼ æ™ºæ’­å®¢BBS</a> 
     </div>
     <div id="DesktopText">
-        <a href="javascript:void(0)"><img border="0" src="style/images/top/text.gif"/>±ã¼ã</a>
+        <a href="javascript:void(0)"><img border="0" src="style/images/top/text.gif"/>ä¾¿ç¬º</a>
         <span id=TryoutInfo></span>
         <span id="Version">
             <a href="javascript:void(0)">

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags"  prefix="s"%>
 <%
 String path = request.getContextPath();
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </TR>
                 </TABLE>
             </DIV>
-            <DIV ID="CopyRight"><A HREF="javascript:void(0)">&copy; 2010 °æÈ¨ËùÓĞ itcast</A></DIV>
+            <DIV ID="CopyRight"><A HREF="javascript:void(0)">&copy; 2010 ç‰ˆæƒæ‰€æœ‰ itcast</A></DIV>
         </DIV>
     </DIV>
 </FORM>

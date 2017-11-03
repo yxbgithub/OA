@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%
 String path = request.getContextPath();
@@ -9,52 +9,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-	<title>╡©цеиХжц</title>
+	<title>И┐╗И≈╗Х╝╬Г╫╝</title>
     <%@ include file="/WEB-INF/jsp/public/header.jspf" %>
 </head>
 <body>
 
-<!-- ╠ЙлБотй╬ --> 
+<!-- Ф═┤И╒≤Ф≤╬Г╓╨ --> 
 <div id="Title_bar">
     <div id="Title_bar_Head">
         <div id="Title_Head"></div>
-        <div id="Title"><!--рЁцФ╠ЙлБ-->
-            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> ╡©цепео╒
+        <div id="Title"><!--И║╣И²╒Ф═┤И╒≤-->
+            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> И┐╗И≈╗Д©║Ф│╞
         </div>
         <div id="Title_End"></div>
     </div>
 </div>
-<!--отй╬╠М╣╔дзхщ-->
+<!--Ф≤╬Г╓╨Х║╗Е█∙Е├┘Е╝╧-->
 <div id=MainArea>
     <form action='oa/department_<s:property value="%{#parameters.id == null ? 'add' : 'edit'}"/>.do' method="get">
     	<input type="hidden" name="parentId" value='<s:property value="%{parentId}"/>'/>
     	<input type="hidden" name="id" value='<s:property value="%{id}"/>'/>
-        <div class="ItemBlock_Title1"><!-- пео╒к╣цВ<DIV CLASS="ItemBlock_Title1">
-        	<IMG BORDER="0" WIDTH="4" HEIGHT="7" SRC="style/blue/images/item_point.gif" /> ╡©цепео╒ </DIV>  -->
+        <div class="ItemBlock_Title1"><!-- Д©║Ф│╞Х╞╢Ф≤▌<DIV CLASS="ItemBlock_Title1">
+        	<IMG BORDER="0" WIDTH="4" HEIGHT="7" SRC="style/blue/images/item_point.gif" /> И┐╗И≈╗Д©║Ф│╞ </DIV>  -->
         </div>
-        <!-- ╠М╣╔дзхщотй╬ -->
+        <!-- Х║╗Е█∙Е├┘Е╝╧Ф≤╬Г╓╨ -->
         <div class="ItemBlockBorder">
             <div class="ItemBlock">
                 <table cellpadding="0" cellspacing="0" class="mainForm">
-                    <tr><td width="100">ио╪╤╡©це</td>
+                    <tr><td width="100">Д╦┼Г╨╖И┐╗И≈╗</td>
                         <td><select name="parent.id" class="SelectStyle">
-                                <option value="-1"  <s:if test="%{parentId == null}">selected="selected"</s:if> >гКя║тЯ╡©це</option>
+                                <option value="-1"  <s:if test="%{parentId == null}">selected="selected"</s:if> >Х╞╥И─┴Ф▀╘И┐╗И≈╗</option>
                                 <s:iterator value="%{#departments}">
 	                                <option value='<s:property value="%{id}"/>'    <s:if test="%{parentId.intValue() == id}">selected="selected"</s:if> >   <s:property value="%{name}"/>
                                 </s:iterator>
                             </select>
                         </td>
                     </tr>
-                    <tr><td>╡©цецШЁф</td>
+                    <tr><td>И┐╗И≈╗Е░█Г╖╟</td>
                         <td><input type="text" name="name" value='<s:property value="name"/>' class="InputStyle"/> *</td>
                     </tr>
-                    <tr><td>ж╟дэк╣цВ</td>
+                    <tr><td>Х│▄Х┐╫Х╞╢Ф≤▌</td>
                         <td><textarea name="description" class="TextareaStyle"><s:property value="description"/></textarea></td>
                     </tr>
                 </table>
             </div>
         </div>
-        <!-- ╠М╣╔╡ывВ -->
+        <!-- Х║╗Е█∙Ф⌠█Д╫° -->
         <div id="InputDetailBar">
             <input type="image" src="style/images/save.png"/>
             <a href="javascript:history.go(-1);"><img src="style/images/goBack.png"/></a>
@@ -63,9 +63,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <s:debug></s:debug>
 <div class="Description">
-	к╣цВё╨<br />
-	1ё╛ио╪╤╡©це╣дап╠Мйгсп╡Ц╢н╫А╧╧╣дё╗йВпнё╘║ё<br/>
-	2ё╛хГ╧Шйгпч╦дё╨ио╪╤╡©цеап╠Мжп╡╩дэотй╬╣╠г╟пч╦д╣д╡©це╪╟фДвскО╡©це║ёрРн╙╡╩дэя║тЯвтря╩Рвтря╣двс╡©цевВн╙ио╪╤╡©це║ё<br />
+	Х╞╢Ф≤▌О╪ <br />
+	1О╪▄Д╦┼Г╨╖И┐╗И≈╗Г └Е┬≈Х║╗Ф≤╞Ф°┴Е╠┌Ф╛║Г╩⌠Ф·└Г └О╪┬Ф═▒Е╫╒О╪┴Ц─┌<br/>
+	2О╪▄Е╕┌Ф·°Ф≤╞Д©╝Ф■╧О╪ Д╦┼Г╨╖И┐╗И≈╗Е┬≈Х║╗Д╦╜Д╦█Х┐╫Ф≤╬Г╓╨Е╫⌠Е┴█Д©╝Ф■╧Г └И┐╗И≈╗Е▐┼Е┘╤Е╜░Е╜≥И┐╗И≈╗Ц─┌Е⌡═Д╦╨Д╦█Х┐╫И─┴Ф▀╘Х┤╙Е╥╡Ф┬√Х┤╙Е╥╡Г └Е╜░И┐╗И≈╗Д╫°Д╦╨Д╦┼Г╨╖И┐╗И≈╗Ц─┌<br />
 </div>
 
 </body>

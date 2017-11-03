@@ -37,6 +37,8 @@
 				<value>com.baidu.OA.model.Department</value>
 				<value>com.baidu.OA.model.Privilege</value>
 				<value>com.baidu.OA.model.Forum</value>
+				<value>com.baidu.OA.model.Topic</value>
+				<value>com.baidu.OA.model.Reply</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

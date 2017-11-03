@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%
 String path = request.getContextPath();
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>ÓÃ»§ÁĞ±í</title>
+    <title>ç”¨æˆ·åˆ—è¡¨</title>
      <%@ include file="/WEB-INF/jsp/public/header.jspf" %>
 </head>
 <body>
@@ -17,8 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="Title_bar">
     <div id="Title_bar_Head"> 
         <div id="Title_Head"></div>
-        <div id="Title"><!--Ò³Ãæ±êÌâ-->
-            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> ÓÃ»§¹ÜÀí
+        <div id="Title"><!--é¡µé¢æ ‡é¢˜-->
+            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> ç”¨æˆ·ç®¡ç†
         </div>
         <div id="Title_End"></div>
     </div>
@@ -27,19 +27,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="MainArea">
     <table cellspacing="0" cellpadding="0" class="TableStyle">
        
-        <!-- ±íÍ·-->
+        <!-- è¡¨å¤´-->
         <thead>
             <tr align=center valign=middle id=TableTitle>
-                <td width="100">µÇÂ¼Ãû</td>
-                <td width="100">ĞÕÃû</td>
-                <td width="100">ËùÊô²¿ÃÅ</td>
-                <td width="200">¸ÚÎ»</td>
-                <td>±¸×¢</td>
-                <td>Ïà¹Ø²Ù×÷</td>
+                <td width="100">ç™»å½•å</td>
+                <td width="100">å§“å</td>
+                <td width="100">æ‰€å±éƒ¨é—¨</td>
+                <td width="200">å²—ä½</td>
+                <td>å¤‡æ³¨</td>
+                <td>ç›¸å…³æ“ä½œ</td>
             </tr>
         </thead>
         
-        <!--ÏÔÊ¾Êı¾İÁĞ±í-->
+        <!--æ˜¾ç¤ºæ•°æ®åˆ—è¡¨-->
         <tbody id="TableData" class="dataContainer" datakey="userList">
         	<s:iterator value="#users">
 	            <tr class="TableDetail1 template">
@@ -55,13 +55,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <td><s:property value="description"/>&nbsp;</td>
 	                <td>
 	                	<s:if test="%{#session.user.hasPrivilegeByUrl('user_delete')}">
-	                		<s:a onclick="return delConfirm()" href="oa/user_delete.do?id=%{id}">É¾³ı</s:a>
+	                		<s:a onclick="return delConfirm()" href="oa/user_delete.do?id=%{id}">åˆ é™¤</s:a>
 	                	</s:if>
 	                	<s:if test="%{#session.user.hasPrivilegeByUrl('user_edit')}">
-	                   	 	<s:a href="oa/user_editUI.do?departmentId=%{department.id}&id=%{id}">ĞŞ¸Ä</s:a>
+	                   	 	<s:a href="oa/user_editUI.do?departmentId=%{department.id}&id=%{id}">ä¿®æ”¹</s:a>
 						</s:if>
 						<s:if test="%{#session.user.hasPrivilegeByUrl('user_initPassword')}">
-							<s:a onclick="return window.confirm('ÄúÈ·¶¨Òª³õÊ¼»¯ÃÜÂëÎª1234Âğ£¿')" href="oa/user_initPassword.do?id=%{id}">³õÊ¼»¯ÃÜÂë</s:a>
+							<s:a onclick="return window.confirm('æ‚¨ç¡®å®šè¦åˆå§‹åŒ–å¯†ç ä¸º1234å—ï¼Ÿ')" href="oa/user_initPassword.do?id=%{id}">åˆå§‹åŒ–å¯†ç </s:a>
 	               		</s:if>
 	                </td>
 	            </tr>
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </tbody>
     </table>
     
-    <!-- ÆäËû¹¦ÄÜ³¬Á´½Ó -->
+    <!-- å…¶ä»–åŠŸèƒ½è¶…é“¾æ¥ -->
     <div id="TableTail">
         <div id="TableTail_inside">
         	<s:if test="%{#session.user.hasPrivilegeByUrl('user_add')}">

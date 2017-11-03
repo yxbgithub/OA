@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%
 String path = request.getContextPath();
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>°æ¿éÁĞ±í</title>
+    <title>ç‰ˆå—åˆ—è¡¨</title>
     <%@ include file="/WEB-INF/jsp/public/header.jspf" %>
 </head>
 <body>
@@ -17,8 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="Title_bar">
     <div id="Title_bar_Head">
         <div id="Title_Head"></div>
-        <div id="Title"><!--Ò³Ãæ±êÌâ-->
-            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> °æ¿é¹ÜÀí
+        <div id="Title"><!--é¡µé¢æ ‡é¢˜-->
+            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> ç‰ˆå—ç®¡ç†
         </div>
         <div id="Title_End"></div>
     </div>
@@ -27,32 +27,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="MainArea">
     <table cellspacing="0" cellpadding="0" class="TableStyle">
        
-        <!-- ±íÍ·-->
+        <!-- è¡¨å¤´-->
         <thead>
             <tr align="CENTER" valign="MIDDLE" id="TableTitle">
-            	<td width="250px">°æ¿éÃû³Æ</td>
-                <td width="300px">°æ¿éËµÃ÷</td>
-                <td>Ïà¹Ø²Ù×÷</td>
+            	<td width="250px">ç‰ˆå—åç§°</td>
+                <td width="300px">ç‰ˆå—è¯´æ˜</td>
+                <td>ç›¸å…³æ“ä½œ</td>
             </tr>
         </thead>
 
-		<!--ÏÔÊ¾Êı¾İÁĞ±í-->
+		<!--æ˜¾ç¤ºæ•°æ®åˆ—è¡¨-->
         <tbody id="TableData" class="dataContainer" datakey="forumList">
-        	<s:iterator value="#forums">
+        	<s:iterator value="#forums" status="status">
 				<tr class="TableDetail1 template">
 					<td><s:property value="%{name}"/>&nbsp;</td>
 					<td><s:property value="%{description}"/>&nbsp;</td>
-					<td><a onClick="return delConfirm()" href='oa/forumManager_delete.do?id=<s:property value="%{id}"/>'>É¾³ı</a>
-						<a href='oa/forumManager_editUI.do?id=<s:property value="%{id}"/>'>ĞŞ¸Ä</a>
-						<a href='oa/forumManager_moveUp.do?id=<s:property value="%{id}"/>'>ÉÏÒÆ</a>
-						<a href='oa/forumManager_moveDown.do?id=<s:property value="%{id}"/>'>ÏÂÒÆ</a>
+					<td><a onClick="return delConfirm()" href='oa/forumManager_delete.do?id=<s:property value="%{id}"/>'>åˆ é™¤</a>
+						<a href='oa/forumManager_editUI.do?id=<s:property value="%{id}"/>'>ä¿®æ”¹</a>
+						<s:if test="%{#status.first}">
+							<span style="color:gray;cursor:pointer;">ä¸Šç§»</span>
+						</s:if>
+						<s:else>
+							<a href='oa/forumManager_moveUp.do?id=<s:property value="%{id}"/>'>ä¸Šç§»</a>
+						</s:else>
+						<s:if test="%{#status.last}">
+							<span style="color:gray;cursor:pointer;">ä¸‹ç§»</span>
+						</s:if>
+						<s:else>
+							<a href='oa/forumManager_moveDown.do?id=<s:property value="%{id}"/>'>ä¸‹ç§»</a>
+						</s:else>
 					</td>
 				</tr>
 			</s:iterator>
         </tbody>
     </table>
     
-    <!-- ÆäËû¹¦ÄÜ³¬Á´½Ó -->
+    <!-- å…¶ä»–åŠŸèƒ½è¶…é“¾æ¥ -->
     <div id="TableTail">
         <div id="TableTail_inside">
             <a href="oa/forumManager_addUI.do"><img src="style/images/createNew.png" /></a>
@@ -61,9 +71,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 <div class="Description">
-	ËµÃ÷£º<br />
-	1£¬ÏÔÊ¾µÄÁĞ±í°´ÆäsortOrderÖµÉıĞòÅÅÁĞ¡£<br />
-	2£¬¿ÉÒÔÍ¨¹ıÉÏÒÆÓëÏÂÒÆ¹¦ÄÜµ÷ÕûË³Ğò¡£×îÉÏÃæµÄ²»ÄÜÉÏÒÆ£¬×îÏÂÃæµÄ²»ÄÜÏÂÒÆ¡£<br />
+	è¯´æ˜ï¼š<br />
+	1ï¼Œæ˜¾ç¤ºçš„åˆ—è¡¨æŒ‰å…¶sortOrderå€¼å‡åºæ’åˆ—ã€‚<br />
+	2ï¼Œå¯ä»¥é€šè¿‡ä¸Šç§»ä¸ä¸‹ç§»åŠŸèƒ½è°ƒæ•´é¡ºåºã€‚æœ€ä¸Šé¢çš„ä¸èƒ½ä¸Šç§»ï¼Œæœ€ä¸‹é¢çš„ä¸èƒ½ä¸‹ç§»ã€‚<br />
 </div>
 
 </body>

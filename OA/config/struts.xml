@@ -74,5 +74,23 @@
 			<result name="toList" type="redirectAction">forumManager_list</result>
 		</action>
 	
+		<!--  版块-->
+		<action name="forum_*" class="forumAction" method="{1}">
+			<result name="list" type="dispatcher">/WEB-INF/jsp/forumAction/list.jsp</result>
+			<result name="forumShow" type="dispatcher">/WEB-INF/jsp/forumAction/forumShow.jsp</result>
+		</action>
+		
+		<!--  主题-->
+		<action name="topic_*" class="topicAction" method="{1}">
+			<result name="topicShow" type="dispatcher">/WEB-INF/jsp/topicAction/topicShow.jsp</result>
+			<result name="saveUI" type="dispatcher">/WEB-INF/jsp/topicAction/saveUI.jsp</result>
+			<result name="toTopicShow" type="redirectAction">topic_topicShow?id=${topicId}</result>
+		</action>
+		
+		<!--  回复-->
+		<action name="reply_*" class="replyAction" method="{1}">
+			<result name="saveUI" type="dispatcher">/WEB-INF/jsp/replyAction/saveUI.jsp</result>
+			<result name="toTopicShow" type="redirectAction">topic_topicShow?id=${topicId}</result>
+		</action>
 	</package>
 </struts>

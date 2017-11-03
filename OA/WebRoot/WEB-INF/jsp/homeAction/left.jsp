@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%
 String path = request.getContextPath();
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-<title>ตผบฝฒหตฅ</title>
+<title>ๅฏผ่ช่ๅ•</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script language="JavaScript" src="script/jquery.js"></script>
 <script language="JavaScript" src="script/menu.js"></script>

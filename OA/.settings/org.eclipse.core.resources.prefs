@@ -1,2 +1,15 @@
 eclipse.preferences.version=1
-encoding//WebRoot/WEB-INF/jsp/departmentAction/saveUI.jsp=GB18030
+encoding//WebRoot/WEB-INF/jsp/departmentAction/list.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/departmentAction/saveUI.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/forumAction/forumShow.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/forumManagerAction/list.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/public/header.jspf=UTF-8
+encoding//WebRoot/script/DataShowManager.js=UTF-8
+encoding//WebRoot/script/DemoData.js=UTF-8
+encoding//WebRoot/script/PageUtils.js=UTF-8
+encoding//WebRoot/script/jquery_validate/messages_zh.js=UTF-8
+encoding//WebRoot/script/pageCommon.js=UTF-8
+encoding//src/com/baidu/OA/action/DepartmentAction.java=UTF-8
+encoding//src/com/baidu/OA/action/UserAction.java=UTF-8
+encoding//src/com/baidu/OA/install/Installer.java=UTF-8
+encoding//src/com/baidu/OA/util/DepartmentUtil.java=UTF-8

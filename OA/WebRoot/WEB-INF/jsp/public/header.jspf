@@ -4,3 +4,6 @@
     <script language="javascript" src="script/PageUtils.js" charset="utf-8"></script>
     <link type="text/css" rel="stylesheet" href="style/blue/pageCommon.css" />
     <script type="text/javascript"> </script>
+	<script language="javascript" src="script/jquery_validate/jquery.metadata.js" charset="utf-8"></script>
+	<script language="javascript" src="script/jquery_validate/jquery.validate.js" charset="utf-8"></script>
+	<script language="javascript" src="script/jquery_validate/messages_zh.js" charset="utf-8"></script>

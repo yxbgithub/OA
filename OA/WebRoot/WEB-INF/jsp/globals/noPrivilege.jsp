@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <TITLE>Ã»ÓĞÈ¨ÏŞ</TITLE>
+    <TITLE>æ²¡æœ‰æƒé™</TITLE>
     <%@ include file="/WEB-INF/jsp/public/header.jspf" %>
 </HEAD>
 <BODY>
@@ -16,26 +16,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <DIV ID="Title_bar">
     <DIV ID="Title_bar_Head">
         <DIV ID="Title_Head"></DIV>
-        <DIV ID="Title"><!--Ò³Ãæ±êÌâ-->
-            <IMG BORDER="0" WIDTH="13" HEIGHT="13" SRC="../style/images/title_arrow.gif"/> ÌáÊ¾
+        <DIV ID="Title"><!--é¡µé¢æ ‡é¢˜-->
+            <IMG BORDER="0" WIDTH="13" HEIGHT="13" SRC="../style/images/title_arrow.gif"/> æç¤º
         </DIV>
         <DIV ID="Title_End"></DIV>
     </DIV>
 </DIV>
 
 
-<!--ÏÔÊ¾±íµ¥ÄÚÈİ-->
+<!--æ˜¾ç¤ºè¡¨å•å†…å®¹-->
 <DIV ID="MainArea">
 		<DIV CLASS="ItemBlock_Title1">
         </DIV> 
 
         <DIV CLASS="ItemBlockBorder" STYLE="margin-left: 15px;">
             <DIV CLASS="ItemBlock" STYLE="text-align: center; font-size: 16px;">
-                ³ö´íÁË£¬ÄúÃ»ÓĞÈ¨ÏŞ·ÃÎÊ´Ë¹¦ÄÜ£¡
+                å‡ºé”™äº†ï¼Œæ‚¨æ²¡æœ‰æƒé™è®¿é—®æ­¤åŠŸèƒ½ï¼
             </DIV>
         </DIV>
         
-        <!-- ²Ù×÷ -->
+        <!-- æ“ä½œ -->
         <DIV ID="InputDetailBar">
             <A HREF="javascript:history.go(-1);"><IMG SRC="../style/images/goBack.png"/></A>
         </DIV>

@@ -10,7 +10,7 @@
     
     <Loggers>  
       
-        <Root level="debug">  
+        <Root level="error">  
             <AppenderRef ref="Console" />  
         </Root>  
         
@@ -21,7 +21,7 @@
         <!-- 表示com.baidu.OA包或者子包的log4j输出级别是debug, additivity设置是否在父logger里面显示信息，如果设置为
         true（默认），将会在父logger里面显示（父logger是指涵盖该logger的logger，比如root标签里面的logger就是该logger
         	的父logger，因为不配置该logger，则此处所指定的包下面的日志将依照root标签定义的logger来显示	-->
-         <Logger name="com.baidu.OA" level="debug" additivity="false">
+         <Logger name="com.baidu.OA" level="error" additivity="false">
          	<!--引用前面配置的输出配置   -->
             <AppenderRef ref="Console" />  
         </Logger> 
