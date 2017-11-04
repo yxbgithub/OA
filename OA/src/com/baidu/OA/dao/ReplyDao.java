@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.baidu.OA.base.BaseDao;
 import com.baidu.OA.model.Reply;
+import com.baidu.OA.model.Topic;
 
 public interface ReplyDao extends BaseDao<Reply>{
 
@@ -13,5 +14,8 @@ public interface ReplyDao extends BaseDao<Reply>{
 	 * @return
 	 */
 	List<Reply> getByTopic(int id);
+
+	@Deprecated
+	List<Topic> getRecordListByForum(int currentPage, int pageSize, Topic topic);
 
 }

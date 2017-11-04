@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.baidu.OA.base.BaseDaoImpl;
 import com.baidu.OA.dao.TopicDao;
+import com.baidu.OA.model.Forum;
 import com.baidu.OA.model.Topic;
 
 @Repository("topicDao")
@@ -29,6 +30,27 @@ public class TopicDaoImpl extends BaseDaoImpl<Topic> implements TopicDao {
 			}
 		});
 		return topics;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Deprecated
+	public List<Topic> getRecordListByForum(final int currentPage, final int pageSize,
+			final Forum forum) {
+		
+		List<Topic> recordList = (List<Topic>) this.getHinernateTemplate().execute(new HibernateCallback() {
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				return  session.createQuery("from Topic t where t.forum.id = :id order by (case when t.type = 2 then 2 else 0 end) desc,t.lastUpdate desc")//
+						.setInteger("id", forum.getId())//
+						.setFirstResult((currentPage-1)*pageSize)//
+						.setMaxResults(pageSize)//
+						.list();
+				
+			}
+		});
+		return recordList;
 	}
 
 }

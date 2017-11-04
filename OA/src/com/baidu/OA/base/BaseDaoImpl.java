@@ -2,11 +2,17 @@ package com.baidu.OA.base;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.baidu.OA.util.ModelUtil;
@@ -68,6 +74,28 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 			list.add(this.getById(id));
 		}
 		return list;
+	}
+
+	@Override
+	public List<T> getRecordList(final String queryString, final Object[] arges, final int currentPage, final int pageSize) {
+System.out.println("-------------------------这是新的recordList方法");
+		List<T> recordList = (List<T>) this.getHinernateTemplate().execute(new HibernateCallback() {
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Query q = session.createQuery(queryString);
+				if(null == arges || (arges.length == 0)) {
+					return Collections.emptyList();
+				}
+				for(int i=0; i<arges.length; i++) {
+					q.setParameter(i, arges[i]);
+				}
+				q.setFirstResult((currentPage-1)*pageSize)//
+					.setMaxResults(pageSize);
+				return q.list();
+			}
+		});
+		return recordList;
 	}
 
 	

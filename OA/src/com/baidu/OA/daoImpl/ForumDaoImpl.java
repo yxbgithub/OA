@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.baidu.OA.base.BaseDaoImpl;
 import com.baidu.OA.dao.ForumDao;
 import com.baidu.OA.model.Forum;
+import com.baidu.OA.model.Topic;
 @Repository("forumDao")
 public class ForumDaoImpl extends BaseDaoImpl<Forum> implements ForumDao {
 
@@ -109,5 +110,5 @@ public class ForumDaoImpl extends BaseDaoImpl<Forum> implements ForumDao {
 	public List<Forum> findAll() {
 		return this.getHinernateTemplate().find("from t_forum f order by f.position asc");
 	}
-	
+
 }

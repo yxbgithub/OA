@@ -14,6 +14,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<%@ include file="/WEB-INF/jsp/public/header.jspf"%>
 	<script language="javascript" src="script/fckeditor/fckeditor.js" charset="utf-8"></script>
     <script type="text/javascript">
+	    function gotoPage(pageNUm) {
+			window.location.href = "oa/forum_forumShow.do?id=${forum.id}&currentPage=" + pageNUm;
+		}
+    
 		$(function(){
 			var fck = new FCKeditor("content");
 			fck.Width = "90%";
@@ -101,6 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 					<tr><!-- 文章内容 -->
 						<td valign="top" align="center">
+							<!-- escape=false注意设置 -->
 							<div class="Content"><s:property value="%{#topic.content}" escape="false"/></div>
 						</td>
 					</tr>
@@ -122,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 			<!-- ~~~~~~~~~~~~~~~ 显示回复列表 ~~~~~~~~~~~~~~~ -->
-			<s:iterator value="%{#replies}" status="status">
+			<s:iterator value="%{recordList}" status="status">
 				<div class="ListArea template">
 					<table border="0" cellpadding="0" cellspacing="1" width="100%">
 						<tr>
@@ -152,13 +157,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 						<tr><!-- 文章内容 -->
 							<td valign="top" align="center">
-								<div class="Content"><s:property value="content"/></div>
+								<div class="Content"><s:property value="%{content}" escape="false"/></div>
 							</td>
 						</tr>
 						<tr><!--显示楼层等信息-->
 							<td class="Footer" height="28" align="center" valign="bottom">
 								<ul style="margin: 0px; width: 98%;">
-									<li style="float: left; line-height:18px;"><font color=#C30000>[<s:property value="%{#status.count}"/> 楼]</font>
+									<li style="float: left; line-height:18px;"><font color=#C30000>[<s:property value="%{(currentPage-1)*pageSize + #status.count}"/> 楼]</font>
 										<s:date name="%{postDate}" format="yyyy-MM-dd HH:mm"/>
 									</li>
 									<li style="float: right;"><a href="javascript:scroll(0,0)">
@@ -174,41 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 
 		<!--分页信息-->
-		<div id=PageSelectorBar>
-			<div id=PageSelectorMemo>
-				页次：7/13页 &nbsp;
-				每页显示：30条 &nbsp;
-				总记录数：385条
-			</div>
-			<div id=PageSelectorSelectorArea>
-				<!--
-				<IMG SRC="style/blue/images/pageSelector/firstPage2.png"/>
-				-->
-				<a href="javascript:void(0)" title="首页" style="cursor: hand;">
-					<img src="style/blue/images/pageSelector/firstPage.png"/></a>
-				
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">3</span>
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">4</span>
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">5</span>
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">6</span>
-				<span class="PageSelectorNum PageSelectorSelected">7</span>
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">8</span>
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">9</span>
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">10</span>
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">11</span>
-				<span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">12</span>
-				
-				<!--
-				<IMG SRC="style/blue/images/pageSelector/lastPage2.png"/>
-				-->
-				<a href="#" title="尾页" style="cursor: hand;">
-					<img src="style/blue/images/pageSelector/lastPage.png"/></a>
-				
-				转到：
-				<input onFocus="this.select();" maxlength="2" class="inputStyle" type="text" value="1" name="currPage" tabindex="0"/>
-				<input type="submit" name="goBtn" value="Go" class="MiddleButtonStyle" />
-			</div>
-		</div>
+		<%@ include file="/WEB-INF/jsp/public/pageView.jspf" %>
 
 		<div class="ForumPageTableBorder" style="margin-top: 25px;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -233,75 +204,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td width="50px" class="Deep"><b>标题</b></td>
 					<td class="no_color_bg">
 						<input type="text" name="title" class="InputStyle" value="回复：昨天发现在表单里删除的图片" style="width:90%"/>
-					</td>
-				</tr>
-				<tr height="30" class="Tint">
-					<td width="50px" class="Deep"><b>表情</b></td>
-					<td class="no_color_bg"><div class="InputContent">
-						<!-- 显示表情符号 -->
-						<!--现在在设计单选框(radio)和复选框(checkbox)时都会给选择文字加上label增大选择范围，以提高用户体验。
-							但在给单独的图片加label时无法成功。
-							解决方法是：给图片img标签加上disabled即可。-->
-						<table cellpadding="0" border="0" cellspacing="0">
-							<tr>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="1" id="r_1"/>
-									<label for="r_1"><img width="19" height="19" src="style/images/face/face1.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="2" id="r_2"/>
-									<label for="r_2"><img width="19" height="19" src="style/images/face/face2.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="3" id="r_3"/>
-									<label for="r_3"><img width="19" height="19" src="style/images/face/face3.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="4" id="r_4"/>
-									<label for="r_4"><img width="19" height="19" src="style/images/face/face4.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="5" id="r_5"/>
-									<label for="r_5"><img width="19" height="19" src="style/images/face/face5.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="6" id="r_6"/>
-									<label for="r_6"><img width="19" height="19" src="style/images/face/face6.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="7" id="r_7"/>
-									<label for="r_7"><img width="19" height="19" src="style/images/face/face7.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="8" id="r_8"/>
-									<label for="r_8"><img width="19" height="19" src="style/images/face/face8.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="9" id="r_9"/>
-									<label for="r_9"><img width="19" height="19" src="style/images/face/face9.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="10" id="r_10"/>
-									<label for="r_10"><img width="19" height="19" src="style/images/face/face10.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="11" id="r_11"/>
-									<label for="r_11"><img width="19" height="19" src="style/images/face/face11.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="12" id="r_12"/>
-									<label for="r_12"><img width="19" height="19" src="style/images/face/face12.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="13" id="r_13"/>
-									<label for="r_13"><img width="19" height="19" src="style/images/face/face13.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="14" id="r_14"/>
-									<label for="r_14"><img width="19" height="19" src="style/images/face/face14.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-							</tr>
-						</table></div>
 					</td>
 				</tr>
 				<tr class="Tint" height="200">

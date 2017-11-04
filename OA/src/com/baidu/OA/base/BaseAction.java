@@ -26,7 +26,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	protected ForumService forumService;
 	protected TopicService topicService;
 	protected ReplyService replyService;
-	
+	protected int currentPage = 1;
 	
 	protected T model;
 
@@ -118,6 +118,14 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	
 	public User getUser() {
 		return (User) ActionContext.getContext().getSession().get("user");
+	}
+	
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 }
 

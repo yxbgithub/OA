@@ -3,6 +3,7 @@ package com.baidu.OA.dao;
 import java.util.List;
 
 import com.baidu.OA.base.BaseDao;
+import com.baidu.OA.model.Forum;
 import com.baidu.OA.model.Topic;
 
 public interface TopicDao extends BaseDao<Topic>{
@@ -13,5 +14,8 @@ public interface TopicDao extends BaseDao<Topic>{
 	 * @return
 	 */
 	List<Topic> getByForum(int id);
+	
+	@Deprecated
+	List<Topic> getRecordListByForum(int currentPage, int pageSize, Forum forum);
 
 }

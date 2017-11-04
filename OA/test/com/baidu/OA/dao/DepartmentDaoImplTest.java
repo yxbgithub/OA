@@ -45,4 +45,10 @@ public class DepartmentDaoImplTest {
 		ApplicationContext factory = new ClassPathXmlApplicationContext("beans.xml");
 		
 	}
+	
+	@Test
+	public final void test2() {
+		String[] arges = null;
+		System.out.println(arges.length);
+	}
 }

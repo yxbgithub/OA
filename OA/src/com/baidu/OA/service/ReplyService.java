@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.baidu.OA.dao.ReplyDao;
 import com.baidu.OA.model.Forum;
+import com.baidu.OA.model.PageBean;
 import com.baidu.OA.model.Reply;
 import com.baidu.OA.model.Topic;
+import com.baidu.OA.util.Configuration;
 
 @Service("replyService")
 public class ReplyService {
@@ -49,6 +51,22 @@ public class ReplyService {
 		topic.setLastReply(reply);
 		// 更新topic属性：lastUpdate ---》当前新建回复时间
 		topic.setLastUpdate(reply.getPostDate());
+	}
+
+	public PageBean getPageBeanByTopic(Topic topic, int currentPage) {
+		if(null == topic) {
+			return null;
+		}
+		int pageSize = Configuration.getPageSize();
+		
+		String queryString = "from Reply r where r.topic = ? order by r.postDate";
+		Object[] arges = new Object[]{topic};
+		List<Reply> recordList = replyDao.getRecordList(queryString, arges,currentPage,pageSize);
+		
+		int recordCount = topic.getReplyCount();
+		
+		
+		return new PageBean(currentPage,pageSize,recordCount,recordList);
 	}
 	
 }

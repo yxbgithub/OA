@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.model.PageBean;
 import com.baidu.OA.model.Reply;
 import com.baidu.OA.model.Topic;
 import com.baidu.OA.model.User;
@@ -23,8 +24,10 @@ public class TopicAction extends BaseAction<Topic> {
 		ActionContext.getContext().put("topic", topic);
 		
 		//便于后面的对回复进行分页，我们单独去回复集合
-		List<Reply> replies = replyService.getByTopic(topic);
-		ActionContext.getContext().put("replies", replies);
+		/*List<Reply> replies = replyService.getByTopic(topic);
+		ActionContext.getContext().put("replies", replies);*/
+		PageBean pageBean = replyService.getPageBeanByTopic(topic, currentPage);
+		ActionContext.getContext().getValueStack().push(pageBean);
 		return "topicShow";
 	}
 	
@@ -33,8 +36,6 @@ public class TopicAction extends BaseAction<Topic> {
 	}
 	
 	public String add() {
-System.out.println("-------------------------content" + model.getContent());
-System.out.println("-------------------------title" + model.getTitle());
 		Topic topic = new Topic();
 		
 		topic.setTitle(model.getTitle());

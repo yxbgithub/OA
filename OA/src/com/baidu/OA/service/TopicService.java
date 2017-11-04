@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.baidu.OA.dao.TopicDao;
 import com.baidu.OA.model.Forum;
+import com.baidu.OA.model.PageBean;
 import com.baidu.OA.model.Topic;
+import com.baidu.OA.util.Configuration;
 
 @Service("topicService")
 public class TopicService {
@@ -55,5 +57,22 @@ public class TopicService {
 
 	public void update(Topic topic) {
 		topicDao.update(topic);
+	}
+
+	public PageBean getPageBeanByForum(Forum forum, int currentPage) {
+		if(null == forum) {
+			return null;
+		}
+		int pageSize = Configuration.getPageSize();
+		
+		String queryString = "from Topic t where t.forum = ? order by (case when t.type = 2 "
+				+ "then 2 else 0 end) desc,t.lastUpdate desc";
+		Object[] arges = new Object[]{forum};
+		List<Topic> recordList = topicDao.getRecordList(queryString, arges,currentPage,pageSize);
+		
+		int recordCount = forum.getTopicCount();
+		
+		
+		return new PageBean(currentPage,pageSize,recordCount,recordList);
 	}
 }

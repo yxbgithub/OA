@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.baidu.OA.dao.ForumDao;
 import com.baidu.OA.model.Forum;
+import com.baidu.OA.model.PageBean;
+import com.baidu.OA.model.Topic;
+import com.baidu.OA.util.Configuration;
 
 @Service("forumService")
 public class ForumService {
@@ -56,4 +59,5 @@ public class ForumService {
 	public void moveDown(Forum model) {
 		forumDao.moveDown(model.getId());
 	}
+
 }
