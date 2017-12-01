@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script language="javascript" src="script/fckeditor/fckeditor.js" charset="utf-8"></script>
     <script type="text/javascript">
 	    function gotoPage(pageNUm) {
-			window.location.href = "oa/forum_forumShow.do?id=${forum.id}&currentPage=" + pageNUm;
+			window.location.href = "oa/topic_topicShow.do?id=${topic.id}&currentPage=" + pageNUm;
 		}
     
 		$(function(){

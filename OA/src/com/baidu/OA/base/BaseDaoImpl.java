@@ -77,18 +77,17 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 	}
 
 	@Override
-	public List<T> getRecordList(final String queryString, final Object[] arges, final int currentPage, final int pageSize) {
-System.out.println("-------------------------这是新的recordList方法");
+	public List<T> getRecordList(final String queryString, final List parameters, final int currentPage, final int pageSize) {
 		List<T> recordList = (List<T>) this.getHinernateTemplate().execute(new HibernateCallback() {
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				Query q = session.createQuery(queryString);
-				if(null == arges || (arges.length == 0)) {
+				if(null == parameters || (parameters.size() == 0)) {
 					return Collections.emptyList();
 				}
-				for(int i=0; i<arges.length; i++) {
-					q.setParameter(i, arges[i]);
+				for(int i=0; i<parameters.size(); i++) {
+					q.setParameter(i, parameters.get(i));
 				}
 				q.setFirstResult((currentPage-1)*pageSize)//
 					.setMaxResults(pageSize);

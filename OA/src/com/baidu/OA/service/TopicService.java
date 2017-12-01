@@ -13,6 +13,7 @@ import com.baidu.OA.model.Forum;
 import com.baidu.OA.model.PageBean;
 import com.baidu.OA.model.Topic;
 import com.baidu.OA.util.Configuration;
+import com.baidu.OA.util.QueryHelper;
 
 @Service("topicService")
 public class TopicService {
@@ -59,19 +60,23 @@ public class TopicService {
 		topicDao.update(topic);
 	}
 
-	public PageBean getPageBeanByForum(Forum forum, int currentPage) {
-		if(null == forum) {
-			return null;
-		}
+	
+	@Deprecated
+	public PageBean getPageBeanByForum(int currentPage,
+			List<Object> parameters, String queryString) {
 		int pageSize = Configuration.getPageSize();
+		List<Topic> recordList = topicDao.getRecordList(queryString, parameters, currentPage, pageSize);
 		
-		String queryString = "from Topic t where t.forum = ? order by (case when t.type = 2 "
-				+ "then 2 else 0 end) desc,t.lastUpdate desc";
-		Object[] arges = new Object[]{forum};
-		List<Topic> recordList = topicDao.getRecordList(queryString, arges,currentPage,pageSize);
+		int recordCount = ((Forum) parameters.get(0)).getTopicCount();
 		
-		int recordCount = forum.getTopicCount();
+		return new PageBean(currentPage,pageSize,recordCount,recordList);
+	}
+
+	public PageBean getPageBeanByForum(int currentPage, QueryHelper queryHelper) {
+		int pageSize = Configuration.getPageSize();
+		List<Topic> recordList = topicDao.getRecordList(queryHelper.getQueryString(), queryHelper.getParameters(), currentPage, pageSize);
 		
+		int recordCount = ((Forum) queryHelper.getParameters().get(0)).getTopicCount();
 		
 		return new PageBean(currentPage,pageSize,recordCount,recordList);
 	}

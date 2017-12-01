@@ -10,6 +10,6 @@ public interface BaseDao<T> {
 	public List<T> getByIds(int[] ids);
 	public void update(T entity);
 	public List<T> findAll();
-	public List<T> getRecordList(String queryString, Object[] arges,int currentPage, int pageSize);
+	public List<T> getRecordList(String queryString, List parameters,int currentPage, int pageSize);
 	
 }

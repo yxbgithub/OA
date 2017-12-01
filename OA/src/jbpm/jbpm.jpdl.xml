@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process key="天天向上" name="你好" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="147,11,48,48" name="开始">
+      <transition g="-52,-22" name="提交申请" to="提交申请"/>
+   </start>
+   <task assignee="员工" g="123,101,92,52" name="提交申请">
+      <transition g="-108,-21" name="部门经理【审批】" to="部门经理"/>
+   </task>
+   <task assignee="部门经理" g="123,184,92,52" name="部门经理">
+      <transition g="-112,-16" name="总经理【审批】" to="总经理"/>
+   </task>
+   <task assignee="总经理" g="121,287,92,52" name="总经理">
+      <transition g="-50,-22" name="结束" to="结束"/>
+   </task>
+   <end g="146,382,48,48" name="结束"/>
+</process>

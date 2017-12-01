@@ -1,5 +1,6 @@
 package com.baidu.OA.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -60,8 +61,9 @@ public class ReplyService {
 		int pageSize = Configuration.getPageSize();
 		
 		String queryString = "from Reply r where r.topic = ? order by r.postDate";
-		Object[] arges = new Object[]{topic};
-		List<Reply> recordList = replyDao.getRecordList(queryString, arges,currentPage,pageSize);
+		List<Object> parameters = new ArrayList<Object>();
+		parameters.add(topic);
+		List<Reply> recordList = replyDao.getRecordList(queryString, parameters,currentPage,pageSize);
 		
 		int recordCount = topic.getReplyCount();
 		

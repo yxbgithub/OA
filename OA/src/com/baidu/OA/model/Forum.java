@@ -9,8 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Entity(name = "t_forum")
+@Entity(name="t_forum")
 public class Forum {
 	private int id;
 	private String name;
