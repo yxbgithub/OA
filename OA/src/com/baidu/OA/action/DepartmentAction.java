@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.base.ModelDrivenAction;
 import com.baidu.OA.model.Department;
 import com.baidu.OA.service.DepartmentService;
 import com.baidu.OA.util.DepartmentUtil;
@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 @Controller("departmentAction")
 @Scope("prototype")
-public class DepartmentAction extends BaseAction<Department>{
+public class DepartmentAction extends ModelDrivenAction<Department>{
 	private Integer parentId;
 	
 	public String list() {

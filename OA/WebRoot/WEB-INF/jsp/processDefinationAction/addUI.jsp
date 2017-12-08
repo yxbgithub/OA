@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags"  prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,28 +9,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-	<title>岗位设置</title>
-    <%@ include file="/WEB-INF/jsp/public/header.jspf" %>
+	<title>部署流程定义</title>
+	<%@ include file="/WEB-INF/jsp/public/header.jspf"%>
+	<script type="text/javascript">
+	     $().ready(function() {
+	    	    $("form").validate({
+	    	    	rules:{
+	    	    		zipFile:{
+	    	    			required:true,
+	    	    			accept:"zip"
+	    	    		}
+	    	    	},
+	    	    	messages: {
+	    	    		zipFile: {
+	    	    			required:"请添加文件",
+	    	    			accept:"请添加正确格式的文件"
+	    	    		}
+	    	    	}
+	    	    });
+	    	});
+     </script>
 </head>
-<body> 
+<body>
 
 <!-- 标题显示 -->
 <div id="Title_bar">
     <div id="Title_bar_Head">
         <div id="Title_Head"></div>
         <div id="Title"><!--页面标题-->
-            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> 岗位设置
+            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> 部署流程定义
         </div>
         <div id="Title_End"></div>
     </div>
 </div>
 
 <!--显示表单内容-->
-<div id="MainArea">
-   <form action='oa/role_<s:property value="%{#parameters.id == null ? 'add' : 'edit'}"/>.do' method="post">
-    	<input type="hidden" name="id" value='<s:property value="%{#role.id}"/>'/>
+<div id=MainArea>
+	<form action="oa/processDefination_add.do" method="post" enctype="multipart/form-data">
         <div class="ItemBlock_Title1"><!-- 信息说明<DIV CLASS="ItemBlock_Title1">
-        	<IMG BORDER="0" WIDTH="4" HEIGHT="7" SRC="style/blue/images/item_point.gif" /> 岗位信息 </DIV>  -->
+        	<IMG BORDER="0" WIDTH="4" HEIGHT="7" SRC="style/blue/images/item_point.gif" /> 部署流程定义 </DIV>  -->
         </div>
         
         <!-- 表单内容显示 -->
@@ -38,12 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="ItemBlock">
                 <table cellpadding="0" cellspacing="0" class="mainForm">
                     <tr>
-                        <td width="100">岗位名称</td>
-                        <td><input type="text" name="name" class="InputStyle" value='<s:property value="%{#role.name}"/>' /> *</td>
-                    </tr>
-                    <tr>
-                        <td>岗位说明</td>
-                        <td><textarea name="description" class="TextareaStyle"/><s:property value="%{#role.description}"/></textarea></td>
+						<td>请选择流程定义文档(zip格式)</td>
+                        <td><input type="file" name="zipFile" class="InputStyle" style="width:450px;" /> *</td>
                     </tr>
                 </table>
             </div>
@@ -56,5 +69,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </form>
 </div>
+
+<div class="Description">
+	说明：只接受zip扩展名的文件。
+</div>
+
 </body>
 </html>

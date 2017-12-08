@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.base.ModelDrivenAction;
 import com.baidu.OA.model.Forum;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller("forumManagerAction")
 @Scope("prototype")
-public class ForumManagerAction extends BaseAction<Forum> {
+public class ForumManagerAction extends ModelDrivenAction<Forum> {
 
 	public String list() {
 		List<Forum> forums = forumService.findAll();

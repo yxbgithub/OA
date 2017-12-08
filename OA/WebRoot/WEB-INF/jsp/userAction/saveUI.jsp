@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!--显示表单内容-->
 <div id=MainArea>
-    <form action='oa/user_<s:property value="%{#parameters.id == null ? 'add' : 'edit'}"/>.do'>
+    <form action='oa/user_<s:property value="%{#parameters.id == null ? 'add' : 'edit'}"/>.do' method="post">
     <input type="hidden" name="id" value='<s:property value="%{id}"/>'/>
         <div class="ItemBlock_Title1"><!-- 信息说明 --><div class="ItemBlock_Title1">
         	<img border="0" width="4" height="7" src="style/blue/images/item_point.gif" /> 用户信息 </div> 

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.base.ModelDrivenAction;
 import com.baidu.OA.model.Forum;
 import com.baidu.OA.model.PageBean;
 import com.baidu.OA.model.Topic;
@@ -14,7 +14,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller("forumAction")
 @Scope("prototype")
-public class ForumAction extends BaseAction<Forum> {
+public class ForumAction extends ModelDrivenAction<Forum> {
 	/**
 	 * 0:显示全部主题:不会生成where字句
 	 * 1:只显示精华帖：where t.type = ?
@@ -77,9 +77,6 @@ public class ForumAction extends BaseAction<Forum> {
 		}*/
 		
 		//借助QueryHelper工具类拼接hql语句
-System.out.println("-------------------viewType:" + viewType);
-System.out.println("-------------------orderBy:" + orderBy);
-System.out.println("-------------------asc:" + asc);
 		QueryHelper queryHelper = new QueryHelper(Topic.class,"t")//
 			.addWhereCondition("t.forum =?", forum)//
 			.addWhereCondition((1 == viewType), "t.type=?", new Integer(1))//
@@ -89,7 +86,6 @@ System.out.println("-------------------asc:" + asc);
 			.orderByClause((2 == orderBy), "t.postDate", asc)//
 			.orderByClause((3 == orderBy), "t.replyCount", asc);
 		PageBean pageBean = topicService.getPageBeanByForum(currentPage,queryHelper);
-System.out.println("queryHelper------------------------------->" + queryHelper.getQueryString());
 		ActionContext.getContext().getValueStack().push(pageBean);
 		return "forumShow";
 	}

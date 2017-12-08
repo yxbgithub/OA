@@ -54,8 +54,22 @@ public class QueryHelper {
 		return this;
 	}
 
-	public String getQueryString() {
+	/**
+	 * 获取查询数据列表的HQL语句
+	 * 
+	 * @return
+	 */
+	public String getQueryListString() {
 		return queryString = fromClause + whereClause + orderByClause;
+	}
+	
+	/**
+	 * 获取查询总记录数的HQL语句（没有OrderBy子句）
+	 * 
+	 * @return
+	 */
+	public String getQueryCountString() {
+		return "select count(*) " + fromClause + whereClause;
 	}
 
 	public List<Object> getParameters() {

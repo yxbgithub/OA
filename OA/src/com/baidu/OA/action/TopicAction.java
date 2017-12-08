@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.base.ModelDrivenAction;
 import com.baidu.OA.model.PageBean;
 import com.baidu.OA.model.Reply;
 import com.baidu.OA.model.Topic;
@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller("topicAction")
 @Scope("prototype")
-public class TopicAction extends BaseAction<Topic> {
+public class TopicAction extends ModelDrivenAction<Topic> {
 	private Integer forumId;
 	
 	public String topicShow() {

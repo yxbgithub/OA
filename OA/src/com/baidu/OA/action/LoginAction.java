@@ -3,13 +3,13 @@ package com.baidu.OA.action;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.base.ModelDrivenAction;
 import com.baidu.OA.model.User;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller("loginAction")
 @Scope("prototype")
-public class LoginAction extends BaseAction<User> {
+public class LoginAction extends ModelDrivenAction<User> {
 	
 	public String loginInUI() {
 		return "loginInUI";

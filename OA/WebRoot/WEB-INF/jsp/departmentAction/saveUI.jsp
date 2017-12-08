@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!--显示表单内容-->
 <div id=MainArea>
-    <form action='oa/department_<s:property value="%{#parameters.id == null ? 'add' : 'edit'}"/>.do' method="get">
+    <form action='oa/department_<s:property value="%{#parameters.id == null ? 'add' : 'edit'}"/>.do' method="post">
     	<input type="hidden" name="parentId" value='<s:property value="%{parentId}"/>'/>
     	<input type="hidden" name="id" value='<s:property value="%{id}"/>'/>
         <div class="ItemBlock_Title1"><!-- 信息说明<DIV CLASS="ItemBlock_Title1">

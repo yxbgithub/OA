@@ -1,15 +1,13 @@
 package com.baidu.OA.log;
 
-import java.lang.annotation.Annotation;
+import java.io.File;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-
-import javax.persistence.Entity;
+import java.net.MalformedURLException;
 
 import org.junit.Test;
-
-import com.baidu.OA.model.Role;
-import com.baidu.OA.model.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
@@ -42,8 +40,7 @@ public class TestLogger extends Superclass<String>{
 	
 	@Test
 	public final void test2() {
-		new TestLogger().print();
-		
+		ApplicationContext fac = new ClassPathXmlApplicationContext("beans.xml");
 	}
 
 }

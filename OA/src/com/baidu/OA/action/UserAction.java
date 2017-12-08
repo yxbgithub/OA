@@ -8,7 +8,7 @@ import java.util.Set;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.base.ModelDrivenAction;
 import com.baidu.OA.model.Department;
 import com.baidu.OA.model.Role;
 import com.baidu.OA.model.User;
@@ -16,7 +16,7 @@ import com.baidu.OA.util.DepartmentUtil;
 import com.opensymphony.xwork2.ActionContext;
 @Controller("userAction")
 @Scope("prototype")
-public class UserAction extends BaseAction<User>{
+public class UserAction extends ModelDrivenAction<User>{
 	private Integer[] roleIds;
 	private Integer departmentId;
 	

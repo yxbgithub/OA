@@ -91,11 +91,11 @@ public class Installer {
 		
 		//审批流转下面的子菜单
 		Privilege menu20,menu21,menu22,menu23,menu24;
-		menu20 = new Privilege("审批流程管理", "flowManager_list", menu19);
+		menu20 = new Privilege("审批流程管理", "processDefination_list", menu19);
 		menu21 = new Privilege("表单模板管理", "templateManager_list", menu19);
-		menu22 = new Privilege("起草申请", "flowApplication_list", menu19);
-		menu23 = new Privilege("待我审批", "myTasks_list", menu19);
-		menu24 = new Privilege("我的申请查询", "myApplication_list", menu19);
+		menu22 = new Privilege("起草申请", "application_templateList", menu19);
+		menu23 = new Privilege("待我审批", "task_myTasks", menu19);
+		menu24 = new Privilege("我的申请查询", "application_myApplicationList", menu19);
 		 
 		hibernateTemplate.save(menu19);
 		hibernateTemplate.save(menu20);

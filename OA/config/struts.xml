@@ -92,5 +92,47 @@
 			<result name="saveUI" type="dispatcher">/WEB-INF/jsp/replyAction/saveUI.jsp</result>
 			<result name="toTopicShow" type="redirectAction">topic_topicShow?id=${topicId}</result>
 		</action>
+		
+		<!--  流程定义-->
+		<action name="processDefination_*" class="processDefinationAction" method="{1}">
+			<result name="list" type="dispatcher">/WEB-INF/jsp/processDefinationAction/list.jsp</result>
+			<result name="addUI" type="dispatcher">/WEB-INF/jsp/processDefinationAction/addUI.jsp</result>
+			<!-- type为stream用于下载文件 -->
+			<result name="showDifinationImage" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="toList" type="redirectAction">processDefination_list</result>
+		</action>
+		
+		<!-- 模板管理 -->
+		<action name="templateManager_*" class="templateManagerAction" method="{1}">
+			<result name="list" type="dispatcher">/WEB-INF/jsp/templateManagerAction/list.jsp</result>
+			<result name="saveUI" type="dispatcher">/WEB-INF/jsp/templateManagerAction/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">templateManager_list</result>
+			<!-- 下载 -->
+			<result name="download" type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">attachment;filename="${#filename}.doc"</param>
+			</result>
+		</action>
+		
+		
+		<!--  起草申请、我的申请查询-->
+		<action name="application_*" class="applicationAction" method="{1}">
+			<result name="templateList" type="dispatcher">/WEB-INF/jsp/applicationAction/templateList.jsp</result>
+			<result name="submitUI" type="dispatcher">/WEB-INF/jsp/applicationAction/submitUI.jsp</result>
+			<result name="myApplicationList" type="dispatcher">/WEB-INF/jsp/applicationAction/myApplicationList.jsp</result>
+			<result name="applicationInfo" type="dispatcher">/WEB-INF/jsp/applicationAction/applicationInfo.jsp</result>
+			<result name="approvedHistory" type="dispatcher">/WEB-INF/jsp/applicationAction/approvedHistory.jsp</result>
+			<result name="toMyApplicationList" type="redirectAction">application_myApplicationList?userId=${userId}</result>
+		</action>
+		
+		<!--  回复-->
+		<action name="task_*" class="taskAction" method="{1}">
+			<result name="myTasks" type="dispatcher">/WEB-INF/jsp/taskAction/myTasks.jsp</result>
+			<result name="approveUI" type="dispatcher">/WEB-INF/jsp/taskAction/approveUI.jsp</result>
+			<result name="toMyTasks" type="redirectAction">task_myTasks</result>
+		</action>
 	</package>
 </struts>

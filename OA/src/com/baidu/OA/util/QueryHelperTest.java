@@ -32,7 +32,7 @@ public class QueryHelperTest {
 			.orderByClause((1 == orderBy), "t.lastUpdate", asc)//
 			.orderByClause((2 == orderBy), "t.postDate", asc)//
 			.orderByClause((3 == orderBy), "t.replyCount", asc);
-		System.out.println(queryHelper.getQueryString());
+		System.out.println(queryHelper.getQueryListString());
 	}
 
 }

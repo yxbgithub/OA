@@ -61,7 +61,7 @@ public class TopicService {
 	}
 
 	
-	@Deprecated
+	/*@Deprecated
 	public PageBean getPageBeanByForum(int currentPage,
 			List<Object> parameters, String queryString) {
 		int pageSize = Configuration.getPageSize();
@@ -70,14 +70,9 @@ public class TopicService {
 		int recordCount = ((Forum) parameters.get(0)).getTopicCount();
 		
 		return new PageBean(currentPage,pageSize,recordCount,recordList);
-	}
+	}*/
 
 	public PageBean getPageBeanByForum(int currentPage, QueryHelper queryHelper) {
-		int pageSize = Configuration.getPageSize();
-		List<Topic> recordList = topicDao.getRecordList(queryHelper.getQueryString(), queryHelper.getParameters(), currentPage, pageSize);
-		
-		int recordCount = ((Forum) queryHelper.getParameters().get(0)).getTopicCount();
-		
-		return new PageBean(currentPage,pageSize,recordCount,recordList);
+		return topicDao.getRecordList(queryHelper, currentPage);
 	}
 }

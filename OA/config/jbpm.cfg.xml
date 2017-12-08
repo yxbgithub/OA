@@ -7,6 +7,7 @@
 	<!-- <import resource="jbpm.tx.hibernate.cfg.xml" /> -->
 	<!--与spring整合，  -->
 	<import resource="jbpm.tx.spring.cfg.xml" />
+	
 	<import resource="jbpm.jpdl.cfg.xml" />
 	<import resource="jbpm.bpmn.cfg.xml" />
 	<import resource="jbpm.identity.cfg.xml" />

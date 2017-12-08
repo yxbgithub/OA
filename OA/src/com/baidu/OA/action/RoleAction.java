@@ -10,13 +10,13 @@ import org.springframework.stereotype.Controller;
 
 import com.baidu.OA.model.Privilege;
 import com.baidu.OA.model.Role;
-import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.base.ModelDrivenAction;
 import com.baidu.OA.service.RoleService;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller("roleAction")
 @Scope("prototype")
-public class RoleAction extends BaseAction<Role>{
+public class RoleAction extends ModelDrivenAction<Role>{
 	private Integer[] privilegeIds;
 	
 	public String list() {

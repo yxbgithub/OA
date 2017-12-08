@@ -32,6 +32,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
+				<value>com.baidu.OA.model.ApproveInfo</value>
 				<value>com.baidu.OA.model.User</value>
 				<value>com.baidu.OA.model.Role</value>
 				<value>com.baidu.OA.model.Department</value>
@@ -39,6 +40,8 @@
 				<value>com.baidu.OA.model.Forum</value>
 				<value>com.baidu.OA.model.Topic</value>
 				<value>com.baidu.OA.model.Reply</value>
+				<value>com.baidu.OA.model.Template</value>
+				<value>com.baidu.OA.model.Application</value>
 			</list>
 		</property>
 		
@@ -56,7 +59,7 @@
 		
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
 				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate3.SpringSessionContext
 				</prop>
 				<prop key="hibernate.show_sql">true</prop>

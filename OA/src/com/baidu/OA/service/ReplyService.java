@@ -15,6 +15,7 @@ import com.baidu.OA.model.PageBean;
 import com.baidu.OA.model.Reply;
 import com.baidu.OA.model.Topic;
 import com.baidu.OA.util.Configuration;
+import com.baidu.OA.util.QueryHelper;
 
 @Service("replyService")
 public class ReplyService {
@@ -58,17 +59,11 @@ public class ReplyService {
 		if(null == topic) {
 			return null;
 		}
-		int pageSize = Configuration.getPageSize();
 		
-		String queryString = "from Reply r where r.topic = ? order by r.postDate";
-		List<Object> parameters = new ArrayList<Object>();
-		parameters.add(topic);
-		List<Reply> recordList = replyDao.getRecordList(queryString, parameters,currentPage,pageSize);
-		
-		int recordCount = topic.getReplyCount();
-		
-		
-		return new PageBean(currentPage,pageSize,recordCount,recordList);
+		QueryHelper queryHelper = new QueryHelper(Reply.class, "r")//
+			.addWhereCondition("r.topic=?", topic)//
+			.orderByClause("r.postDate", true);
+		return replyDao.getRecordList(queryHelper,currentPage);
 	}
 	
 }

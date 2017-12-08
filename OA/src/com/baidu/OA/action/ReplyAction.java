@@ -5,12 +5,12 @@ import java.util.Date;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.OA.base.BaseAction;
+import com.baidu.OA.base.ModelDrivenAction;
 import com.baidu.OA.model.Reply;
 
 @Controller("replyAction")
 @Scope("prototype")
-public class ReplyAction extends BaseAction<Reply> {
+public class ReplyAction extends ModelDrivenAction<Reply> {
 	private Integer topicId;
 	
 	public String addUI() {
